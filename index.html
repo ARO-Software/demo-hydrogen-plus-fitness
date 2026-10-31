@@ -6,16 +6,39 @@
 <title>Hydrogen+ Fitness &amp; Spa — Irbid</title>
 <meta name="description" content="Hydrogen+ Fitness &amp; Spa, Irbid — strength floor, boxing, classes &amp; Pilates, pool &amp; spa, Hydro Rest kitchen and Hydrogen Lounge.">
 <meta name="theme-color" content="#0A0A0B">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hydrogen+ Fitness &amp; Spa">
+<meta property="og:title" content="Hydrogen+ Fitness &amp; Spa — Irbid">
+<meta property="og:description" content="Strength floor, boxing, classes &amp; Pilates, pool &amp; spa, Hydro Rest kitchen and Hydrogen Lounge. Open daily, 6 AM to midnight.">
+<meta property="og:url" content="https://aro-software.github.io/demo-hydrogen-plus-fitness/">
+<meta property="og:image" content="https://aro-software.github.io/demo-hydrogen-plus-fitness/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="assets/hero-poster.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700;800&amp;family=Cairo:wght@600;800&amp;display=swap" rel="stylesheet">
+<script>
+/* Motion flags, set before first paint: .motion unless reduced motion; .intro once per session. */
+(function () {
+  var r = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  r.classList.add('motion');
+  try { if (!sessionStorage.getItem('h2-intro')) { r.classList.add('intro'); sessionStorage.setItem('h2-intro', '1'); } } catch (e) {}
+})();
+</script>
 <style>
 body{margin:0;background:#0A0A0B}
 a{color:#FF3B42}a:hover{color:#FF7076}
 *{box-sizing:border-box}
+html{scrollbar-color:#3F3F46 #0A0A0B}
+::selection{background:#E3121B;color:#FFFFFF}
 .ecg path{stroke-dasharray:1600;stroke-dashoffset:1600;animation:ecg 3.2s cubic-bezier(.6,0,.3,1) infinite}
 @keyframes ecg{0%{stroke-dashoffset:1600}55%{stroke-dashoffset:0}100%{stroke-dashoffset:-1600}}
-.mq{animation:mq 38s linear infinite}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .pulse{animation:pulse 1.6s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
 .kb{animation:kb 22s ease-in-out infinite alternate;transform-origin:50% 45%;will-change:transform;backface-visibility:hidden}
@@ -37,11 +60,159 @@ a:focus-visible,button:focus-visible{outline:2px solid #FF3B42;outline-offset:3p
 .daybtn:hover{border-color:#FF3B42 !important}
 .outline{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.22)}
 @media (max-width:860px){.navlinks{display:none !important}.hide-sm{display:none !important}.mbar{display:grid}.mpad{padding-bottom:96px !important}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.kb,.mq,.pulse,.scan,.ecg path{animation:none !important}.ecg path{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.kb,.pulse,.scan,.ecg path,.beat::before{animation:none !important}.ecg path{stroke-dashoffset:0}}
+
+/* ---------- Final-touch layer: intro, reveals, tapes, header, menu ---------- */
+
+/* Intro: the heartbeat draws, then the three columns of the hero lift away. */
+#intro{display:none}
+html.intro #intro{display:block;position:fixed;inset:0;z-index:200;cursor:pointer;animation:introSafety 0s 6s forwards}
+@keyframes introSafety{to{visibility:hidden;opacity:0;pointer-events:none}}
+.intro-cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.intro-cols i{position:relative;background:#0A0A0B;box-shadow:1px 0 0 #0A0A0B}
+.intro-cols i::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#FF2A33;box-shadow:0 0 22px 5px rgba(255,42,51,.65);opacity:0}
+.intro-core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;font-family:Anton,Impact,sans-serif;color:#FFFFFF}
+.intro-core::before{content:"";position:absolute;left:50%;top:50%;width:70vmin;height:70vmin;margin:-35vmin 0 0 -35vmin;border-radius:50%;background:radial-gradient(closest-side,rgba(227,18,27,.35),rgba(227,18,27,0));opacity:0}
+.intro-mark{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px;opacity:0}
+.intro-word{font-size:clamp(44px,7vw,92px);line-height:1;letter-spacing:.04em}
+.intro-word b{font-weight:400;color:#FF3B42}
+.intro-sub{font-family:Inter,system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.42em;color:#A1A1AA;padding-left:.42em}
+.intro-ecg{position:relative;width:100vw;height:110px;overflow:visible}
+.intro-ecg path{fill:none;stroke:#FF2A33;stroke-width:3;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 6px rgba(255,42,51,.8))}
+#intro.go .intro-ecg path{animation:introDraw .95s linear .1s forwards}
+#intro.go .intro-mark{animation:introBeat .8s cubic-bezier(.2,.8,.3,1) .5s both}
+#intro.go .intro-core::before{animation:introGlow .8s ease-out .5s both}
+#intro.go .intro-core{animation:introCoreOut .35s cubic-bezier(.7,0,.84,0) 1.2s forwards}
+#intro.go .intro-cols i{animation:introLift .95s cubic-bezier(.76,0,.24,1) 1.35s forwards}
+#intro.go .intro-cols i:nth-child(2){animation-delay:1.43s}
+#intro.go .intro-cols i:nth-child(3){animation-delay:1.51s}
+#intro.go .intro-cols i::after{animation:introEdge .95s linear 1.35s forwards}
+#intro.go .intro-cols i:nth-child(2)::after{animation-delay:1.43s}
+#intro.go .intro-cols i:nth-child(3)::after{animation-delay:1.51s}
+#intro.done{opacity:0;transition:opacity .35s ease;pointer-events:none}
+@keyframes introDraw{to{stroke-dashoffset:0}}
+@keyframes introBeat{0%{opacity:0;transform:scale(.86)}22%{opacity:1;transform:scale(1.07)}40%{transform:scale(.98)}56%{transform:scale(1.035)}100%{opacity:1;transform:scale(1)}}
+@keyframes introGlow{0%{opacity:0;transform:scale(.6)}22%{opacity:1;transform:scale(1)}56%{opacity:.8;transform:scale(1.1)}100%{opacity:.35;transform:scale(1)}}
+@keyframes introCoreOut{to{opacity:0;transform:translateY(-36px)}}
+@keyframes introLift{to{transform:translateY(-101%)}}
+@keyframes introEdge{0%{opacity:0}8%{opacity:1}85%{opacity:1}100%{opacity:0}}
+
+/* Headline words rise out of a mask. */
+.motion .split .w{display:inline-block;overflow:hidden;vertical-align:top;padding:.1em .02em .06em;margin:-.1em -.02em -.06em}
+.motion .split .w>span{display:inline-block;transform:translateY(112%);transition:transform 1.05s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0) * 70ms + var(--d,0ms))}
+.motion .split.in .w>span{transform:none}
+
+/* Hero copy enters after the intro. */
+.motion [data-hero]{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform 1.1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0ms)}
+.motion.hero-in [data-hero]{opacity:1;transform:none}
+
+/* Scroll reveals: single blocks, staggered groups, media curtains. */
+.motion [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform 1.1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0ms)}
+.motion [data-reveal].in{opacity:1;transform:none}
+.motion [data-stagger]>*{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform 1.1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0) * 85ms)}
+.motion [data-stagger="x"]>*{transform:translateX(120px)}
+.motion [data-stagger].in>*{opacity:1;transform:none}
+.motion [data-curtain]::after{content:"";position:absolute;inset:-1px;z-index:5;background:#0A0A0B;transform-origin:50% 0;transition:transform 1.25s cubic-bezier(.76,0,.24,1);transition-delay:inherit;pointer-events:none}
+.motion [data-curtain].in::after{transform:scaleY(0)}
+.motion [data-curtain]>img,.motion [data-curtain]>video{transform:scale(1.18);transition:transform 1.8s cubic-bezier(.16,1,.3,1)}
+.motion [data-curtain].in>img,.motion [data-curtain].in>video{transform:none}
+
+/* Crossed marquee tapes. JS moves them and lets scroll speed push them along. */
+.tapes{position:relative;height:clamp(150px,13vw,260px);overflow:hidden;background:#0A0A0B}
+.tape{position:absolute;left:-6%;width:112%;top:50%;overflow:hidden}
+.tape-a{z-index:2;background:#E3121B;border-top:1px solid #FF3B42;border-bottom:1px solid #A80C13;transform:translateY(-50%) rotate(-3deg);box-shadow:0 24px 50px rgba(0,0,0,.55)}
+.tape-b{background:#17171A;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);transform:translateY(-50%) rotate(2.4deg)}
+.tape-track{display:flex;width:max-content;padding:16px 0;font-family:Anton,Impact,sans-serif;font-size:30px;line-height:1.15;letter-spacing:.06em;white-space:nowrap;color:#FFFFFF;will-change:transform}
+.tape-track span{padding-right:48px}
+.tape-b .tape-track{color:#D4D4D8}
+.tape-b .tape-track em{font-style:normal;color:#FF3B42}
+@media (max-width:860px){.tapes{height:170px}.tape-track{font-size:22px;padding:13px 0}.tape-a{top:60%;transform:translateY(-50%) rotate(-4deg)}.tape-b{top:38%;transform:translateY(-50%) rotate(3.5deg)}}
+
+/* Header: deeper once scrolled, reading-progress line, section indicator. */
+#hdr{transition:background .35s ease,box-shadow .35s ease}
+#hdr.scrolled{background:rgba(10,10,11,.95) !important;box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.hprog{position:absolute;left:0;right:0;bottom:-1px;height:2px;pointer-events:none}
+.hprog i{display:block;height:100%;background:#FF2A33;box-shadow:0 0 10px rgba(255,42,51,.8);transform-origin:0 50%;transform:scaleX(0)}
+.navlinks{position:relative}
+.navlink{transition:color .25s ease}
+.navlink.is-active{color:#FFFFFF}
+.nav-ind{position:absolute;left:0;bottom:-7px;height:2px;width:0;border-radius:2px;background:#FF2A33;opacity:0;transition:transform .55s cubic-bezier(.16,1,.3,1),width .55s cubic-bezier(.16,1,.3,1),opacity .3s ease}
+
+/* Buttons: a light sweep on hover, magnetic pull on big calls to action. */
+.btn-red{position:relative;overflow:hidden;isolation:isolate}
+.btn-red::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.32) 50%,transparent 70%);transform:translateX(-120%);transition:transform .75s cubic-bezier(.16,1,.3,1)}
+.btn-red:hover::after{transform:translateX(120%)}
+.mag{transition:transform .45s cubic-bezier(.16,1,.3,1),background .2s ease}
+.beat{position:relative}
+.beat::before{content:"";position:absolute;inset:0;border-radius:inherit;animation:beatRing 1.8s ease-out infinite;pointer-events:none}
+@keyframes beatRing{0%{box-shadow:0 0 0 0 rgba(10,10,11,.55)}30%{box-shadow:0 0 0 14px rgba(10,10,11,0)}31%{box-shadow:0 0 0 0 rgba(10,10,11,.4)}60%{box-shadow:0 0 0 22px rgba(10,10,11,0)}100%{box-shadow:0 0 0 22px rgba(10,10,11,0)}}
+
+/* Services stripe: drag on desktop, position line underneath. */
+.svc-track.dragging{cursor:grabbing;scroll-snap-type:none !important;scroll-behavior:auto}
+.svc-track.dragging .svc-card{pointer-events:none}
+@media (hover:hover) and (pointer:fine){.svc-track{cursor:grab}}
+.svc-prog{position:relative;height:2px;border-radius:2px;background:rgba(255,255,255,.12);overflow:hidden}
+.svc-prog i{position:absolute;left:0;top:0;bottom:0;width:30%;border-radius:2px;background:#FF2A33}
+.svc-track.dragging{user-select:none;-webkit-user-select:none}
+
+/* Coach and day switches answer the tap. */
+.is-swap [data-sw="photo"]{animation:swPhoto .85s cubic-bezier(.76,0,.24,1) both}
+.is-swap [data-sw="photo"]>img{animation:swZoom 1.4s cubic-bezier(.16,1,.3,1) both}
+.is-swap [data-sw="up"]{animation:swUp .75s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--i,0) * 55ms + 120ms)}
+.is-swap [data-sw="bar"]{transform-origin:0 50%;animation:swBar 1.1s cubic-bezier(.16,1,.3,1) .3s both}
+@keyframes swPhoto{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes swZoom{from{transform:scale(1.16)}to{transform:none}}
+@keyframes swUp{from{filter:opacity(0);transform:translateY(18px)}to{filter:none;transform:none}}
+@keyframes swBar{from{transform:scaleX(0)}to{transform:none}}
+
+/* Phone menu: red columns drop in, links rise. */
+.burger{display:none;width:44px;height:44px;flex:0 0 auto;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:transparent;color:#FFFFFF;cursor:pointer;align-items:center;justify-content:center;padding:0}
+.burger i{position:absolute;width:16px;height:2px;border-radius:2px;background:currentColor;transition:transform .45s cubic-bezier(.76,0,.24,1)}
+.burger i:first-child{transform:translateY(-3.5px)}
+.burger i:last-child{transform:translateY(3.5px)}
+.menu-open .burger i:first-child{transform:rotate(45deg)}
+.menu-open .burger i:last-child{transform:rotate(-45deg)}
+.mmenu{position:fixed;inset:0;z-index:45;visibility:hidden;transition:visibility 0s linear .9s}
+.menu-open .mmenu{visibility:visible;transition:none}
+.mm-cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.mm-cols i{background:#E3121B;box-shadow:1px 0 0 #E3121B;transform:translateY(-101%);transition:transform .7s cubic-bezier(.76,0,.24,1)}
+.mm-cols i:nth-child(2){transition-delay:.06s}
+.mm-cols i:nth-child(3){transition-delay:.12s}
+.menu-open .mm-cols i{transform:none}
+.mm-body{position:relative;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:104px 24px 32px}
+.mm-nav{display:flex;flex-direction:column}
+.mm-nav a{display:block;overflow:hidden;font-family:Anton,Impact,sans-serif;font-size:clamp(44px,13vw,72px);line-height:1.08;text-transform:uppercase;color:#FFFFFF;text-decoration:none}
+.mm-nav a span{display:block;transform:translateY(110%);transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.menu-open .mm-nav a span{transform:none;transition-delay:calc(.32s + var(--i,0) * 55ms)}
+.mm-foot{display:flex;flex-wrap:wrap;gap:10px;opacity:0;transition:opacity .4s ease}
+.menu-open .mm-foot{opacity:1;transition-delay:.6s}
+.mm-foot a{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:999px;background:#0A0A0B;color:#FFFFFF;text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.04em}
+.menu-open .mbar{opacity:0;pointer-events:none}
+.mbar{transition:opacity .3s ease}
+@media (max-width:860px){.burger{display:inline-flex;position:relative}.hdr-in{gap:12px !important}}
+@media (max-width:480px){.hdr-join{display:none !important}}
+
+/* Footer wordmark. */
+.bigmark{display:inline-block;font-family:Anton,Impact,sans-serif;font-size:19vw;line-height:.8;letter-spacing:.01em;white-space:nowrap;text-align:center;user-select:none;padding-top:.06em}
+.bigmark .w>span{background:linear-gradient(180deg,#FF2A33 0%,#E3121B 35%,rgba(227,18,27,.08) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.motion .bigmark .w>span{transition-duration:1.2s;transition-delay:calc(var(--i,0) * 55ms)}
+
+@media (prefers-reduced-motion:reduce){.is-swap [data-sw]{animation:none !important}.mm-cols i,.mm-nav a span,.mag{transition:none !important}}
 </style>
 
 </head>
 <body>
+<div id="intro" aria-hidden="true">
+<div class="intro-cols"><i></i><i></i><i></i></div>
+<div class="intro-core">
+<div class="intro-mark">
+<svg width="88" height="56" viewBox="0 0 44 28"><rect x="0" y="9" width="4" height="10" rx="2" fill="#FFFFFF"></rect><rect x="6" y="5" width="5" height="18" rx="2.5" fill="#FFFFFF"></rect><rect x="33" y="5" width="5" height="18" rx="2.5" fill="#FFFFFF"></rect><rect x="40" y="9" width="4" height="10" rx="2" fill="#FFFFFF"></rect><rect x="13" y="11.5" width="18" height="5" fill="#E3121B"></rect><rect x="19.5" y="5" width="5" height="18" fill="#E3121B"></rect></svg>
+<div class="intro-word"><b>H</b>YDROGEN<b>+</b></div>
+<div class="intro-sub">FITNESS &amp; SPA · IRBID</div>
+</div>
+<svg class="intro-ecg" viewBox="0 0 1440 110" preserveAspectRatio="none"><path pathLength="1" d="M0 55 H600 L628 55 L646 14 L670 98 L692 4 L714 78 L730 55 H1440"></path></svg>
+</div>
+</div>
 <div id="app"></div>
 <noscript><p style="color:#fff;padding:24px;font-family:sans-serif">Please enable JavaScript to view the Hydrogen+ website.</p></noscript>
 
@@ -50,8 +221,9 @@ a:focus-visible,button:focus-visible{outline:2px solid #FF3B42;outline-offset:3p
 <div style="width: 100%; background: #0A0A0B; color: #F4F4F5; font-family: Inter, system-ui, sans-serif; overflow-x: hidden; overflow-x: clip">
 
 <!-- NAV -->
-<header style="position: sticky; top: 0; z-index: 50; background: rgba(10,10,11,.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.08)">
-<div style="max-width: 1320px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+<header id="hdr" style="position: sticky; top: 0; z-index: 50; background: rgba(10,10,11,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.08)">
+<div class="hprog" aria-hidden="true"><i></i></div>
+<div class="hdr-in" style="max-width: 1320px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
 <a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #FFFFFF" aria-label="Hydrogen+ Fitness and Spa, home">
 <svg width="44" height="28" viewBox="0 0 44 28" aria-hidden="true"><rect x="0" y="9" width="4" height="10" rx="2" fill="#FFFFFF"></rect><rect x="6" y="5" width="5" height="18" rx="2.5" fill="#FFFFFF"></rect><rect x="33" y="5" width="5" height="18" rx="2.5" fill="#FFFFFF"></rect><rect x="40" y="9" width="4" height="10" rx="2" fill="#FFFFFF"></rect><rect x="13" y="11.5" width="18" height="5" fill="#E3121B"></rect><rect x="19.5" y="5" width="5" height="18" fill="#E3121B"></rect></svg>
 <span style="display: flex; flex-direction: column; line-height: 1">
@@ -66,16 +238,41 @@ a:focus-visible,button:focus-visible{outline:2px solid #FF3B42;outline-offset:3p
 <a class="navlink" href="#ladies">For Her</a>
 <a class="navlink" href="#kitchen">Kitchen</a>
 <a class="navlink" href="#visit">Visit &amp; Hours</a>
+<span class="nav-ind" aria-hidden="true"></span>
 </nav>
-<a class="btn-red" href="tel:+962792141000" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 14px; letter-spacing: .04em; border-radius: 999px; white-space: nowrap; flex: 0 0 auto">JOIN NOW
+<div style="display: flex; align-items: center; gap: 10px; flex: 0 0 auto">
+<a class="btn-red mag hdr-join" href="tel:+962792141000" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 14px; letter-spacing: .04em; border-radius: 999px; white-space: nowrap; flex: 0 0 auto">JOIN NOW
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
 </a>
+<button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><i></i><i></i></button>
+</div>
 </div>
 </header>
 
+<!-- PHONE MENU -->
+<div id="mmenu" class="mmenu">
+<div class="mm-cols" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="mm-body">
+<nav class="mm-nav" aria-label="Menu">
+<a href="#train" style="--i: 0"><span>Train</span></a>
+<a href="#coaches" style="--i: 1"><span>Coaches</span></a>
+<a href="#boxing" style="--i: 2"><span>Boxing</span></a>
+<a href="#classes" style="--i: 3"><span>Classes</span></a>
+<a href="#ladies" style="--i: 4"><span>For Her</span></a>
+<a href="#pool" style="--i: 5"><span>Pool &amp; Lounge</span></a>
+<a href="#kitchen" style="--i: 6"><span>Kitchen</span></a>
+<a href="#visit" style="--i: 7"><span>Visit &amp; Hours</span></a>
+</nav>
+<div class="mm-foot">
+<a href="tel:+962792141000">CALL 079 214 1000</a>
+<a href="https://www.instagram.com/hydrogenplusfitness/">INSTAGRAM</a>
+</div>
+</div>
+</div>
+
 <!-- HERO -->
-<section id="top" style="position: relative; min-height: 880px; display: flex; align-items: flex-end">
-<div style="position: absolute; inset: 0; overflow: hidden; background: #0A0A0B">
+<section id="top" style="position: relative; min-height: 880px; min-height: clamp(640px, calc(100svh - 72px), 1080px); display: flex; align-items: flex-end; overflow: hidden">
+<div id="hero-media" style="position: absolute; inset: 0; overflow: hidden; background: #0A0A0B; will-change: transform">
 <video class="kb" data-bg="1" src="assets/hero.mp4" poster="assets/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></video>
 </div>
 <div class="hide-sm" aria-hidden="true" style="position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); pointer-events: none">
@@ -85,48 +282,52 @@ a:focus-visible,button:focus-visible{outline:2px solid #FF3B42;outline-offset:3p
 </div>
 <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,11,.6) 0%, rgba(10,10,11,.2) 30%, rgba(10,10,11,.55) 62%, rgba(10,10,11,.96) 88%, #0A0A0B 100%)"></div>
 <svg class="ecg" viewBox="0 0 1440 120" preserveAspectRatio="none" style="position: absolute; left: 0; right: 0; top: 46%; width: 100%; height: 120px; opacity: .9" aria-hidden="true"><path d="M0 60 H520 L548 60 L566 18 L590 104 L612 6 L634 82 L650 60 H900 L918 60 L930 40 L944 74 L956 60 H1440" fill="none" stroke="#FF2A33" stroke-width="3" stroke-linejoin="round"></path></svg>
-<div style="position: relative; width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 24px 72px">
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div id="hero-copy" style="position: relative; width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 24px 72px">
+<div data-hero style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
 <a data-region="heroOpen" href="#visit" style="display: inline-flex; align-items: center; gap: 10px; min-height: 40px; padding: 8px 14px; border: 1px solid {{openBd}}; border-radius: 999px; background: rgba(10,10,11,.6); font-size: 13px; font-weight: 800; letter-spacing: .08em; color: #FFFFFF; text-decoration: none">
 <span class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: {{openDot}}; display: inline-block"></span>
 {{openText}}
 </a>
 <span style="font-size: 13px; font-weight: 600; letter-spacing: .06em; color: #D4D4D8">IRBID · AL HUSN ROAD · OPPOSITE GRANADA COLLEGE</span>
 </div>
-<h1 style="margin: 24px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(64px, 11vw, 176px); line-height: .88; letter-spacing: -.005em; text-transform: uppercase">Power<br>starts <span style="color: #FF2A33">here.</span></h1>
-<p dir="rtl" lang="ar" style="margin: 20px 0 0; font-family: Cairo, sans-serif; font-weight: 800; font-size: clamp(22px, 2.4vw, 34px); color: #E4E4E7; text-align: left">رحلتك نحو نسخة أقوى من نفسك تبدأ من هنا</p>
-<div style="margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center">
-<a class="btn-red" href="tel:+962792141000" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 30px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 15px; letter-spacing: .06em; border-radius: 999px">BOOK A TOUR</a>
-<a class="btn-ghost" href="#classes" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 30px; border: 1px solid rgba(255,255,255,.35); color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 15px; letter-spacing: .06em; border-radius: 999px">TODAY'S CLASSES</a>
+<h1 class="split" id="hero-title" style="margin: 24px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(64px, 11vw, 176px); line-height: .88; letter-spacing: -.005em; text-transform: uppercase">Power<br>starts <span style="color: #FF2A33">here.</span></h1>
+<p data-hero dir="rtl" lang="ar" style="--d: 420ms; margin: 20px 0 0; font-family: Cairo, sans-serif; font-weight: 800; font-size: clamp(22px, 2.4vw, 34px); color: #E4E4E7; text-align: left">رحلتك نحو نسخة أقوى من نفسك تبدأ من هنا</p>
+<div data-hero style="--d: 560ms; margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center">
+<a class="btn-red mag" href="tel:+962792141000" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 30px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 15px; letter-spacing: .06em; border-radius: 999px">BOOK A TOUR</a>
+<a class="btn-ghost mag" href="#classes" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 30px; border: 1px solid rgba(255,255,255,.35); color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 15px; letter-spacing: .06em; border-radius: 999px">TODAY'S CLASSES</a>
 </div>
 </div>
 </section>
 
-<!-- MARQUEE -->
-<div style="background: #E3121B; color: #FFFFFF; overflow: hidden; border-top: 1px solid #FF3B42; border-bottom: 1px solid #A80C13" aria-hidden="true">
-<div class="mq" style="display: flex; width: max-content; padding: 18px 0; font-family: Anton, Impact, sans-serif; font-size: 30px; letter-spacing: .06em; white-space: nowrap">
-<span style="padding-right: 48px">BODYBUILDING ✚ CARDIO ✚ CLASSES ✚ BOXING ✚ POOL ✚ SPA ✚ NUTRITION ✚ LOUNGE ✚ TRAIN. REST. RECHARGE. ✚ </span>
-<span style="padding-right: 48px">BODYBUILDING ✚ CARDIO ✚ CLASSES ✚ BOXING ✚ POOL ✚ SPA ✚ NUTRITION ✚ LOUNGE ✚ TRAIN. REST. RECHARGE. ✚ </span>
-</div>
+<!-- MARQUEE TAPES -->
+<div class="tapes" aria-hidden="true">
+<div class="tape tape-b"><div class="tape-track" data-dir="1">
+<span>TRAIN. REST. RECHARGE. <em>✚</em> POWER STARTS HERE <em>✚</em> OPEN DAILY 6 AM – 12 AM <em>✚</em> IRBID · AL HUSN ROAD <em>✚</em> </span>
+<span>TRAIN. REST. RECHARGE. <em>✚</em> POWER STARTS HERE <em>✚</em> OPEN DAILY 6 AM – 12 AM <em>✚</em> IRBID · AL HUSN ROAD <em>✚</em> </span>
+</div></div>
+<div class="tape tape-a"><div class="tape-track" data-dir="-1">
+<span>BODYBUILDING ✚ CARDIO ✚ CLASSES ✚ BOXING ✚ POOL ✚ SPA ✚ NUTRITION ✚ LOUNGE ✚ TRAIN. REST. RECHARGE. ✚ </span>
+<span>BODYBUILDING ✚ CARDIO ✚ CLASSES ✚ BOXING ✚ POOL ✚ SPA ✚ NUTRITION ✚ LOUNGE ✚ TRAIN. REST. RECHARGE. ✚ </span>
+</div></div>
 </div>
 
 <!-- FACTS STRIP -->
-<section style="max-width: 1320px; margin: 0 auto; padding: 72px 24px 24px">
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; overflow: hidden">
+<section style="max-width: 1320px; margin: 0 auto; padding: 48px 24px 24px">
+<div data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; overflow: hidden">
 <div style="background: #0A0A0B; padding: 32px">
-<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF">18<span style="color: #FF2A33">H</span></div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF"><span data-count="18">18</span><span style="color: #FF2A33">H</span></div>
 <div style="margin-top: 10px; color: #A1A1AA; font-size: 15px">Open daily — 6 AM to midnight</div>
 </div>
 <div style="background: #0A0A0B; padding: 32px">
-<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF">35<span style="color: #FF2A33">+</span></div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF"><span data-count="35">35</span><span style="color: #FF2A33">+</span></div>
 <div style="margin-top: 10px; color: #A1A1AA; font-size: 15px">Group classes every week</div>
 </div>
 <div style="background: #0A0A0B; padding: 32px">
-<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF">18.4<span style="color: #FF2A33">K</span></div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF"><span data-count="18.4" data-dec="1">18.4</span><span style="color: #FF2A33">K</span></div>
 <div style="margin-top: 10px; color: #A1A1AA; font-size: 15px">Strong community on Instagram</div>
 </div>
 <div style="background: #0A0A0B; padding: 32px">
-<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF">7<span style="color: #FF2A33">+</span></div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF"><span data-count="7">7</span><span style="color: #FF2A33">+</span></div>
 <div style="margin-top: 10px; color: #A1A1AA; font-size: 15px">Champion &amp; certified coaches on the floor</div>
 </div>
 </div>
@@ -137,23 +338,23 @@ a:focus-visible,button:focus-visible{outline:2px solid #FF3B42;outline-offset:3p
 <div style="max-width: 1320px; margin: 0 auto; padding: 0 24px">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
 <div>
-<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">01 — EVERYTHING UNDER ONE ROOF</div>
-<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 96px); line-height: .92; text-transform: uppercase">The biggest gym<br>in the north.</h2>
+<div data-reveal style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">01 — EVERYTHING UNDER ONE ROOF</div>
+<h2 class="split" style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 96px); line-height: .92; text-transform: uppercase">The biggest gym<br>in the north.</h2>
 </div>
-<div style="max-width: 440px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start">
+<div data-reveal style="--d: 200ms; max-width: 440px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start">
 <p style="margin: 0; color: #A1A1AA; font-size: 17px; line-height: 1.6">Strength floor, boxing ring, studio &amp; Pilates, pool &amp; spa, a healthy kitchen and a lounge. Show up for one thing — stay for all of it.</p>
 <div style="display: flex; gap: 10px; align-items: center">
 <button onClick="{{svcPrev}}" aria-label="Previous service" class="btn-ghost" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: transparent; color: #FFFFFF; cursor: pointer; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
 <button onClick="{{svcNext}}" aria-label="Next service" class="btn-red" style="width: 52px; height: 52px; border-radius: 50%; border: 0; background: #E3121B; color: #FFFFFF; cursor: pointer; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
-<span style="margin-left: 6px; font-size: 13px; font-weight: 600; letter-spacing: .08em; color: #8B8B93">SWIPE OR SCROLL</span>
+<span style="margin-left: 6px; font-size: 13px; font-weight: 600; letter-spacing: .08em; color: #8B8B93">DRAG OR SWIPE</span>
 </div>
 </div>
 </div>
 </div>
 
-<div id="svc-track" class="svc-track" style="margin-top: 44px; display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: max(24px, calc((100% - 1272px) / 2)); padding: 0 max(24px, calc((100% - 1272px) / 2)) 8px">
+<div id="svc-track" class="svc-track" data-stagger="x" style="margin-top: 44px; display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: max(24px, calc((100% - 1272px) / 2)); padding: 0 max(24px, calc((100% - 1272px) / 2)) 8px">
 <sc-for list="{{services}}" as="s" hint-placeholder-count="6">
-<a href="{{s.href}}" class="svc-card" style="position: relative; flex: 0 0 clamp(280px, 30vw, 400px); height: clamp(520px, 62vh, 640px); border-radius: 28px; overflow: hidden; scroll-snap-align: start; display: block; color: #FFFFFF; text-decoration: none; background: #141416; border: 1px solid rgba(255,255,255,.08)">
+<a href="{{s.href}}" class="svc-card" draggable="false" style="position: relative; flex: 0 0 clamp(280px, 30vw, 400px); height: clamp(520px, 62vh, 640px); border-radius: 28px; overflow: hidden; scroll-snap-align: start; display: block; color: #FFFFFF; text-decoration: none; background: #141416; border: 1px solid rgba(255,255,255,.08)">
 <video data-bg="1" src="{{s.video}}" poster="{{s.poster}}" muted loop playsinline preload="metadata" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></video>
 <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,11,.55) 0%, rgba(10,10,11,0) 26%, rgba(10,10,11,.15) 50%, rgba(10,10,11,.94) 100%)"></div>
 <div style="position: absolute; top: 20px; left: 22px; right: 22px; display: flex; justify-content: space-between; align-items: center">
@@ -168,6 +369,9 @@ a:focus-visible,button:focus-visible{outline:2px solid #FF3B42;outline-offset:3p
 </a>
 </sc-for>
 </div>
+<div style="max-width: 1320px; margin: 22px auto 0; padding: 0 24px">
+<div class="svc-prog" aria-hidden="true"><i></i></div>
+</div>
 </section>
 
 <!-- COACHES -->
@@ -176,15 +380,15 @@ a:focus-visible,button:focus-visible{outline:2px solid #FF3B42;outline-offset:3p
 <video class="kb" data-bg="1" src="assets/team-floor.mp4" poster="assets/team-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></video>
 </div>
 <div style="position: absolute; inset: 0; background: linear-gradient(180deg, #0A0A0B 0%, rgba(10,10,11,.72) 14%, rgba(10,10,11,.78) 60%, #0A0A0B 100%)"></div>
-<div class="outline hide-sm" aria-hidden="true" style="position: absolute; top: 40px; left: 0; right: 0; text-align: center; font-family: Anton, Impact, sans-serif; font-size: 240px; line-height: 1; white-space: nowrap; pointer-events: none">THE TEAM</div>
+<div class="outline hide-sm" data-drift aria-hidden="true" style="position: absolute; top: 40px; left: 0; right: 0; text-align: center; font-family: Anton, Impact, sans-serif; font-size: 240px; line-height: 1; white-space: nowrap; pointer-events: none">THE TEAM</div>
 
 <div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 0 24px">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
 <div>
-<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">02 — THE COACHES</div>
-<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 96px); line-height: .92; text-transform: uppercase">Know who's<br>coaching you.</h2>
+<div data-reveal style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">02 — THE COACHES</div>
+<h2 class="split" style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 96px); line-height: .92; text-transform: uppercase">Know who's<br>coaching you.</h2>
 </div>
-<div style="max-width: 420px">
+<div data-reveal style="--d: 200ms; max-width: 420px">
 <p style="margin: 0; color: #D4D4D8; font-size: 17px; line-height: 1.6">National medalists, certified trainers and competing athletes. Tap a coach to see their story, their hours and how to reach them.</p>
 <div data-region="onNow" style="margin-top: 14px; display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.4); font-size: 13px; font-weight: 700; color: #BBF7D0">
 <span class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: #22C55E; display: inline-block"></span>
@@ -193,6 +397,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #FF3B42;outline-offset:3p
 </div>
 </div>
 
+<div data-reveal>
 <div data-region="coaches" style="margin-top: 44px; display: flex; flex-wrap: wrap; gap: 16px; align-items: stretch">
 
 <div role="tablist" aria-label="Coaches" style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 8px">
@@ -211,26 +416,28 @@ a:focus-visible,button:focus-visible{outline:2px solid #FF3B42;outline-offset:3p
 </div>
 
 <div role="tabpanel" style="flex: 999 1 560px; min-width: 0; border-radius: 28px; overflow: hidden; background: rgba(20,20,22,.88); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(14px); display: flex; flex-wrap: wrap">
-<div style="flex: 1 1 280px; position: relative; min-height: 420px; background: #0A0A0B">
+<div style="flex: 1 1 280px; position: relative; min-height: 420px; background: #0A0A0B; overflow: hidden">
+<div data-sw="photo" style="position: absolute; inset: 0; overflow: hidden">
 <img src="{{c.photo}}" alt="{{c.alt}}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+</div>
 <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.65) 100%)"></div>
 <div style="position: absolute; top: 16px; left: 16px; padding: 8px 12px; border-radius: 999px; background: #E3121B; font-size: 12px; font-weight: 800; letter-spacing: .14em; color: #FFFFFF">{{c.tag}}</div>
-<div style="position: absolute; bottom: 12px; right: 18px; font-family: Anton, Impact, sans-serif; font-size: 80px; line-height: 1; color: rgba(255,255,255,.22)">{{c.num}}</div>
+<div data-sw="up" style="--i: 3; position: absolute; bottom: 12px; right: 18px; font-family: Anton, Impact, sans-serif; font-size: 80px; line-height: 1; color: rgba(255,255,255,.22)">{{c.num}}</div>
 </div>
 <div style="flex: 1.3 1 320px; padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 18px">
 <div>
-<h3 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(38px, 4vw, 56px); line-height: .95; text-transform: uppercase">{{c.name}}</h3>
-<div style="margin-top: 8px; color: #FF3B42; font-weight: 700; font-size: 14px; letter-spacing: .06em">{{c.role}}</div>
+<h3 data-sw="up" style="--i: 0; margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(38px, 4vw, 56px); line-height: .95; text-transform: uppercase">{{c.name}}</h3>
+<div data-sw="up" style="--i: 1; margin-top: 8px; color: #FF3B42; font-weight: 700; font-size: 14px; letter-spacing: .06em">{{c.role}}</div>
 </div>
 
-<div style="padding: 14px 16px; border-radius: 16px; background: #0A0A0B; border: 1px solid rgba(255,255,255,.08)">
+<div data-sw="up" style="--i: 2; padding: 14px 16px; border-radius: 16px; background: #0A0A0B; border: 1px solid rgba(255,255,255,.08)">
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
 <span style="font-size: 12px; font-weight: 700; letter-spacing: .16em; color: #8B8B93">ON THE FLOOR</span>
 <span style="font-weight: 700; font-size: 15px; color: #FFFFFF">{{c.shift}}</span>
 </div>
 <sc-if value="{{c.hasShift}}" hint-placeholder-val="{{ true }}">
 <div style="margin-top: 10px; position: relative; height: 10px; border-radius: 999px; background: #1F1F23; overflow: hidden">
-<div style="position: absolute; top: 0; bottom: 0; border-radius: 999px; background: #E3121B; left: {{c.l}}; width: {{c.w}}"></div>
+<div data-sw="bar" style="position: absolute; top: 0; bottom: 0; border-radius: 999px; background: #E3121B; left: {{c.l}}; width: {{c.w}}"></div>
 </div>
 <div style="margin-top: 6px; display: flex; justify-content: space-between; font-size: 11px; color: #71717A"><span>12 AM</span><span>6 AM</span><span>12 PM</span><span>6 PM</span><span>12 AM</span></div>
 </sc-if>
@@ -238,7 +445,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #FF3B42;outline-offset:3p
 
 <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #D4D4D8">
 <sc-for list="{{c.facts}}" as="f" hint-placeholder-count="3">
-<li style="display: flex; gap: 12px; align-items: baseline"><span style="flex: 0 0 auto; min-width: 44px; font-family: Anton, Impact, sans-serif; font-size: 15px; color: {{f.color}}">{{f.k}}</span><span>{{f.v}}</span></li>
+<li data-sw="up" style="--i: {{f.i}}; display: flex; gap: 12px; align-items: baseline"><span style="flex: 0 0 auto; min-width: 44px; font-family: Anton, Impact, sans-serif; font-size: 15px; color: {{f.color}}">{{f.k}}</span><span>{{f.v}}</span></li>
 </sc-for>
 </ul>
 
@@ -259,8 +466,9 @@ Message</a>
 </div>
 
 </div>
+</div>
 
-<div style="margin-top: 16px; padding: 20px 26px; border-radius: 20px; background: rgba(20,20,22,.85); border: 1px solid rgba(255,255,255,.08); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div data-reveal style="margin-top: 16px; padding: 20px 26px; border-radius: 20px; background: rgba(20,20,22,.85); border: 1px solid rgba(255,255,255,.08); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
 <div style="font-size: 15px; color: #D4D4D8"><span style="font-weight: 700; color: #FFFFFF">Studio class coaches</span> — Abeer, Farah, Katie, Lesya, Marwa, Sara &amp; Svitlana · <a href="#classes">see the schedule</a></div>
 <a class="btn-red" href="tel:+962792141000" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: .06em; border-radius: 999px">BOOK A PERSONAL TRAINER</a>
 </div>
@@ -270,7 +478,7 @@ Message</a>
 <!-- BOXING SPLIT -->
 <section id="boxing" style="max-width: 1320px; margin: 0 auto; padding: 72px 24px">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0; border-radius: 28px; overflow: hidden; background: #141416; border: 1px solid rgba(255,255,255,.08)">
-<div style="position: relative; min-height: 560px; overflow: hidden; background: #0A0A0B">
+<div data-curtain style="position: relative; min-height: 560px; overflow: hidden; background: #0A0A0B">
 <video data-bg="1" src="assets/boxing-sanad.mp4" poster="assets/boxing-sanad.jpg" muted loop playsinline preload="metadata" aria-label="Coach Sanad Al-Hussien in the Hydrogen+ boxing zone" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></video>
 <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,20,22,0) 70%, rgba(20,20,22,.6) 100%)"></div>
 <div style="position: absolute; left: 20px; bottom: 20px; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; background: rgba(10,10,11,.7); border: 1px solid rgba(255,255,255,.14); font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #FFFFFF">
@@ -279,15 +487,15 @@ COACH SANAD · BOXING ZONE
 </div>
 </div>
 <div style="padding: clamp(32px, 5vw, 72px); display: flex; flex-direction: column; justify-content: center; gap: 22px">
-<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">03 — THE RING</div>
-<h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 5vw, 80px); line-height: .95; text-transform: uppercase">Power doesn't start with the first punch.</h2>
-<p style="margin: 0; color: #A1A1AA; font-size: 17px; line-height: 1.65">It starts the moment you step into the ring. Train with Coach Sanad Al-Hussien — Kingdom Boxing gold medalist and Jordan Universities champion 2021–2024 — and build skill, speed and the kind of conditioning machines can't give you.</p>
+<div data-reveal style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">03 — THE RING</div>
+<h2 class="split" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 5vw, 80px); line-height: .95; text-transform: uppercase">Power doesn't start with the first punch.</h2>
+<p data-reveal style="--d: 150ms; margin: 0; color: #A1A1AA; font-size: 17px; line-height: 1.65">It starts the moment you step into the ring. Train with Coach Sanad Al-Hussien — Kingdom Boxing gold medalist and Jordan Universities champion 2021–2024 — and build skill, speed and the kind of conditioning machines can't give you.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
 <a href="#coaches" style="padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none">Coach Sanad Al-Hussien</a>
 <span style="padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); font-size: 14px; font-weight: 600">Bag &amp; pad work</span>
 <span style="padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); font-size: 14px; font-weight: 600">All levels</span>
 </div>
-<div style="display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 20px; background: #0A0A0B; border: 1px solid rgba(255,255,255,.1)">
+<div data-reveal style="--d: 250ms; display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 20px; background: #0A0A0B; border: 1px solid rgba(255,255,255,.1)">
 <img src="assets/coach-sanad.jpg" alt="Coach Sanad Al-Hussien" style="width: 84px; height: 104px; border-radius: 14px; object-fit: cover; flex: 0 0 auto">
 <div style="min-width: 0">
 <div style="font-size: 11px; font-weight: 800; letter-spacing: .18em; color: #FF3B42">YOUR BOXING COACH</div>
@@ -306,16 +514,17 @@ COACH SANAD · BOXING ZONE
 
 <!-- CLASSES -->
 <section id="classes" style="position: relative; padding: 96px 0; background: #111113; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06)">
-<div class="outline hide-sm" aria-hidden="true" style="position: absolute; top: 24px; left: 0; right: 0; text-align: center; font-family: Anton, Impact, sans-serif; font-size: 220px; line-height: 1; white-space: nowrap; pointer-events: none">SCHEDULE</div>
+<div class="outline hide-sm" data-drift="-1" aria-hidden="true" style="position: absolute; top: 24px; left: 0; right: 0; text-align: center; font-family: Anton, Impact, sans-serif; font-size: 220px; line-height: 1; white-space: nowrap; pointer-events: none">SCHEDULE</div>
 <div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 0 24px">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
 <div>
-<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">04 — GYM CLASS SCHEDULE</div>
-<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 96px); line-height: .92; text-transform: uppercase">Pick your day.<br>Own your hour.</h2>
+<div data-reveal style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">04 — GYM CLASS SCHEDULE</div>
+<h2 class="split" style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 96px); line-height: .92; text-transform: uppercase">Pick your day.<br>Own your hour.</h2>
 </div>
-<p style="margin: 0; max-width: 380px; color: #A1A1AA; font-size: 16px; line-height: 1.6">Cycling, Tabata, Zumba, Pilates, Yoga, Belly Dance and more — six sessions a day, Saturday to Thursday. Friday is for rest.</p>
+<p data-reveal style="--d: 200ms; margin: 0; max-width: 380px; color: #A1A1AA; font-size: 16px; line-height: 1.6">Cycling, Tabata, Zumba, Pilates, Yoga, Belly Dance and more — six sessions a day, Saturday to Thursday. Friday is for rest.</p>
 </div>
 
+<div data-reveal>
 <div data-region="classes">
 <div role="tablist" aria-label="Day of the week" style="margin-top: 40px; display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px">
 <sc-for list="{{days}}" as="d" hint-placeholder-count="6">
@@ -334,7 +543,7 @@ COACH SANAD · BOXING ZONE
 </sc-if>
 <div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px">
 <sc-for list="{{slots}}" as="s" hint-placeholder-count="6">
-<div style="position: relative; display: flex; align-items: center; gap: 22px; padding: 24px; border-radius: 20px; background: #18181B; border: 1px solid {{s.bd}}; min-height: 120px; opacity: {{s.op}}">
+<div data-sw="up" style="--i: {{$index}}; position: relative; display: flex; align-items: center; gap: 22px; padding: 24px; border-radius: 20px; background: #18181B; border: 1px solid {{s.bd}}; min-height: 120px; opacity: {{s.op}}">
 <sc-if value="{{s.next}}" hint-placeholder-val="{{ false }}">
 <span style="position: absolute; top: 12px; right: 14px; padding: 4px 10px; border-radius: 999px; background: #E3121B; font-size: 10px; font-weight: 800; letter-spacing: .16em; color: #FFFFFF">{{s.badge}}</span>
 </sc-if>
@@ -348,6 +557,7 @@ COACH SANAD · BOXING ZONE
 </div>
 </div>
 </sc-for>
+</div>
 </div>
 </div>
 
@@ -368,11 +578,11 @@ COACH SANAD · BOXING ZONE
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px">
 <div style="max-width: 760px">
-<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF8FB1">HYDROGEN FOR HER</div>
-<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(54px, 7.5vw, 124px); line-height: .88; text-transform: uppercase">Your strength<br><span style="color: #FF5C8A">starts with one step.</span></h2>
-<p dir="rtl" lang="ar" style="margin: 18px 0 0; font-family: Cairo, sans-serif; font-weight: 800; font-size: clamp(20px, 2.2vw, 30px); color: #FCE7F3; text-align: left">اختاري نفسكِ، اصنعي قوتكِ، وكوني النسخة الأقوى منكِ</p>
+<div data-reveal style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF8FB1">HYDROGEN FOR HER</div>
+<h2 class="split" style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(54px, 7.5vw, 124px); line-height: .88; text-transform: uppercase">Your strength<br><span style="color: #FF5C8A">starts with one step.</span></h2>
+<p data-reveal dir="rtl" lang="ar" style="--d: 300ms; margin: 18px 0 0; font-family: Cairo, sans-serif; font-weight: 800; font-size: clamp(20px, 2.2vw, 30px); color: #FCE7F3; text-align: left">اختاري نفسكِ، اصنعي قوتكِ، وكوني النسخة الأقوى منكِ</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; flex: 0 1 460px">
+<div data-stagger style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; flex: 0 1 460px">
 <div style="padding: 16px; border-radius: 18px; background: rgba(10,10,11,.72); border: 1px solid rgba(255,143,177,.35); backdrop-filter: blur(10px)">
 <div style="font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #FF8FB1">LADIES' GYM</div>
 <div style="margin-top: 6px; font-family: Anton, Impact, sans-serif; font-size: 24px">8 AM – 11 PM</div>
@@ -391,7 +601,7 @@ COACH SANAD · BOXING ZONE
 </div>
 </div>
 
-<div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px">
+<div data-stagger style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px">
 
 <div style="padding: 26px; border-radius: 24px; background: rgba(10,10,11,.78); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: 12px">
 <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FF5C8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"></circle><path d="M4 20h16M7 20l2-6 3 1 3-1 2 6"></path><path d="M9 14l-2-5h10l-2 5"></path></svg>
@@ -438,13 +648,13 @@ COACH SANAD · BOXING ZONE
 
 </div>
 
-<div style="margin-top: 16px; padding: 22px 26px; border-radius: 22px; background: linear-gradient(90deg, rgba(255,92,138,.22), rgba(227,18,27,.22)); border: 1px solid rgba(255,143,177,.4); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div data-reveal style="margin-top: 16px; padding: 22px 26px; border-radius: 22px; background: linear-gradient(90deg, rgba(255,92,138,.22), rgba(227,18,27,.22)); border: 1px solid rgba(255,143,177,.4); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
 <div>
 <div style="font-family: Anton, Impact, sans-serif; font-size: 28px; text-transform: uppercase">Back to school. Back to <span style="color: #FF8FB1">you.</span></div>
 <div style="margin-top: 4px; color: #FCE7F3; font-size: 15px">Start your mornings with energy, movement and time for yourself.</div>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
-<a href="tel:+962792141000" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; background: #FF5C8A; color: #1A0710; text-decoration: none; font-weight: 800; font-size: 14px; letter-spacing: .06em; border-radius: 999px">BOOK A LADIES' TOUR</a>
+<a class="mag" href="tel:+962792141000" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; background: #FF5C8A; color: #1A0710; text-decoration: none; font-weight: 800; font-size: 14px; letter-spacing: .06em; border-radius: 999px">BOOK A LADIES' TOUR</a>
 <a class="btn-ghost" href="#classes" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 22px; border: 1px solid rgba(255,255,255,.35); color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 14px; border-radius: 999px">CLASS SCHEDULE</a>
 </div>
 </div>
@@ -456,12 +666,12 @@ COACH SANAD · BOXING ZONE
 <section style="max-width: 1320px; margin: 0 auto; padding: 96px 24px 40px">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px">
 
-<div id="pool" style="position: relative; min-height: 640px; border-radius: 28px; overflow: hidden; background: #0C1A22">
+<div id="pool" data-curtain style="position: relative; min-height: 640px; border-radius: 28px; overflow: hidden; background: #0C1A22; scroll-margin-top: 72px">
 <img src="assets/pool.jpg" alt="Indoor pool with water cascade under a glass roof" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
 <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,16,24,.15) 0%, rgba(4,16,24,.92) 78%)"></div>
 <div style="position: absolute; left: 36px; right: 36px; bottom: 36px">
 <div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #7DD3FC">05 — HYDROGEN POOL &amp; SPA</div>
-<h2 style="margin: 12px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 4.6vw, 72px); line-height: .95; text-transform: uppercase">Dive in.<br>Breathe out.</h2>
+<h2 class="split" style="--d: 500ms; margin: 12px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 4.6vw, 72px); line-height: .95; text-transform: uppercase">Dive in.<br>Breathe out.</h2>
 <p style="margin: 14px 0 0; color: #D4E7F0; font-size: 16px; line-height: 1.6; max-width: 460px">Swim laps, cool down after a session or unwind in the spa. Swim courses for kids and ladies run with professional instructors from North Sharks Academy.</p>
 <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px">
 <span style="padding: 10px 16px; border-radius: 999px; background: rgba(125,211,252,.14); border: 1px solid rgba(125,211,252,.35); font-size: 14px; font-weight: 600">Ladies' pool · daily 9 AM – 5 PM</span>
@@ -470,12 +680,12 @@ COACH SANAD · BOXING ZONE
 </div>
 </div>
 
-<div id="lounge" style="position: relative; min-height: 640px; border-radius: 28px; overflow: hidden; background: #1A1714">
+<div id="lounge" data-curtain style="--d: 150ms; transition-delay: 150ms; position: relative; min-height: 640px; border-radius: 28px; overflow: hidden; background: #1A1714; scroll-margin-top: 72px">
 <img src="assets/lounge.jpg" alt="Hydrogen Lounge rooftop terrace with woven chairs" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
 <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,14,10,.1) 0%, rgba(20,14,10,.92) 78%)"></div>
 <div style="position: absolute; left: 36px; right: 36px; bottom: 36px">
 <div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FDBA74">06 — HYDROGEN LOUNGE</div>
-<h2 style="margin: 12px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 4.6vw, 72px); line-height: .95; text-transform: uppercase">After the work,<br>the night.</h2>
+<h2 class="split" style="--d: 650ms; margin: 12px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 4.6vw, 72px); line-height: .95; text-transform: uppercase">After the work,<br>the night.</h2>
 <p style="margin: 14px 0 0; color: #F1E6DC; font-size: 16px; line-height: 1.6; max-width: 460px">Relaxed seating, your favourite drinks, big-match nights and ladies' evenings — a different vibe every visit.</p>
 <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px">
 <span style="padding: 10px 16px; border-radius: 999px; background: rgba(253,186,116,.14); border: 1px solid rgba(253,186,116,.35); font-size: 14px; font-weight: 600">Daily · 6 PM – 2 AM</span>
@@ -499,11 +709,11 @@ COACH SANAD · BOXING ZONE
 </div>
 <div style="position: absolute; inset: 0; background: linear-gradient(180deg, #0A0A0B 0%, rgba(10,10,11,.35) 18%, rgba(10,10,11,.45) 50%, rgba(10,10,11,.95) 85%, #0A0A0B 100%)"></div>
 <div style="position: relative; width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 24px 72px">
-<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #4ADE80">07 — HYDRO REST KITCHEN</div>
-<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(56px, 8vw, 132px); line-height: .88; text-transform: uppercase">Workout done.<br><span style="color: #4ADE80">Hunger on.</span></h2>
-<p dir="rtl" lang="ar" style="margin: 18px 0 0; font-family: Cairo, sans-serif; font-weight: 800; font-size: clamp(20px, 2.2vw, 30px); color: #E4E4E7; text-align: left">وجبتك المتكاملة، بروتين، وصحة، وأكيد زاكي</p>
-<p style="margin: 16px 0 0; max-width: 560px; color: #D4D4D8; font-size: 17px; line-height: 1.6">Our in-house restaurant cooks fresh, healthy plates right next to the gym floor — grilled proteins, balanced meals and good coffee, made for people who train.</p>
-<div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; max-width: 1000px">
+<div data-reveal style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #4ADE80">07 — HYDRO REST KITCHEN</div>
+<h2 class="split" style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(56px, 8vw, 132px); line-height: .88; text-transform: uppercase">Workout done.<br><span style="color: #4ADE80">Hunger on.</span></h2>
+<p data-reveal dir="rtl" lang="ar" style="--d: 300ms; margin: 18px 0 0; font-family: Cairo, sans-serif; font-weight: 800; font-size: clamp(20px, 2.2vw, 30px); color: #E4E4E7; text-align: left">وجبتك المتكاملة، بروتين، وصحة، وأكيد زاكي</p>
+<p data-reveal style="--d: 400ms; margin: 16px 0 0; max-width: 560px; color: #D4D4D8; font-size: 17px; line-height: 1.6">Our in-house restaurant cooks fresh, healthy plates right next to the gym floor — grilled proteins, balanced meals and good coffee, made for people who train.</p>
+<div data-stagger style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; max-width: 1000px">
 <div style="padding: 20px; border-radius: 18px; background: rgba(10,10,11,.7); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px)">
 <div style="font-family: Anton, Impact, sans-serif; font-size: 24px; text-transform: uppercase">Meal plans</div>
 <div style="margin-top: 6px; color: #A1A1AA; font-size: 14px; line-height: 1.5">Subscriptions that are fresh, balanced and calorie-counted.</div>
@@ -517,14 +727,14 @@ COACH SANAD · BOXING ZONE
 <div style="margin-top: 6px; color: #A1A1AA; font-size: 14px; line-height: 1.5">Protein store and nutrition consults under the same roof.</div>
 </div>
 </div>
-<a href="tel:+962792141000" style="margin-top: 28px; display: inline-flex; align-items: center; min-height: 54px; padding: 0 28px; background: #16A34A; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 14px; letter-spacing: .06em; border-radius: 999px">ORDER OR ASK ABOUT MEAL PLANS</a>
+<a class="mag" href="tel:+962792141000" style="margin-top: 28px; display: inline-flex; align-items: center; min-height: 54px; padding: 0 28px; background: #16A34A; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 14px; letter-spacing: .06em; border-radius: 999px">ORDER OR ASK ABOUT MEAL PLANS</a>
 </div>
 </section>
 
 <!-- VISIT -->
 <section id="visit" style="max-width: 1320px; margin: 0 auto; padding: 72px 24px 96px">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px">
-<div style="position: relative; min-height: 560px; border-radius: 28px; overflow: hidden; background: #141416">
+<div data-curtain style="position: relative; min-height: 560px; border-radius: 28px; overflow: hidden; background: #141416">
 <img src="assets/building.jpg" alt="The Hydrogen+ building on Irbid–Al Husn Road" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%">
 <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,11,0) 55%, rgba(10,10,11,.85) 100%)"></div>
 <div style="position: absolute; left: 24px; right: 24px; bottom: 24px">
@@ -540,7 +750,7 @@ COACH SANAD · BOXING ZONE
 <span data-region="visitOpen" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid {{openBd}}; font-size: 12px; font-weight: 800; letter-spacing: .08em">
 <span class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: {{openDot}}; display: inline-block"></span>{{openText}}</span>
 </div>
-<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 4.6vw, 68px); line-height: .95; text-transform: uppercase">Open every day.</h2>
+<h2 class="split" style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 4.6vw, 68px); line-height: .95; text-transform: uppercase">Open every day.</h2>
 <div data-region="hours" style="margin-top: 22px; display: flex; flex-direction: column">
 <sc-for list="{{hours}}" as="r" hint-placeholder-count="5">
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 0; border-top: 1px solid rgba(255,255,255,.07)">
@@ -579,9 +789,9 @@ COACH SANAD · BOXING ZONE
 <section style="position: relative; background: #E3121B; overflow: hidden">
 <svg class="ecg" viewBox="0 0 1440 120" preserveAspectRatio="none" style="position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); width: 100%; height: 160px; opacity: .35" aria-hidden="true"><path d="M0 60 H420 L448 60 L466 18 L490 104 L512 6 L534 82 L550 60 H1000 L1018 60 L1030 40 L1044 74 L1056 60 H1440" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"></path></svg>
 <div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px">
-<h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(52px, 7vw, 120px); line-height: .9; text-transform: uppercase; color: #FFFFFF">Start today.<br>Stronger tomorrow.</h2>
-<div style="display: flex; flex-direction: column; gap: 12px">
-<a href="tel:+962792141000" style="display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 34px; background: #0A0A0B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 16px; letter-spacing: .06em; border-radius: 999px">CALL 079 214 1000</a>
+<h2 class="split" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(52px, 7vw, 120px); line-height: .9; text-transform: uppercase; color: #FFFFFF">Start today.<br>Stronger tomorrow.</h2>
+<div data-reveal style="--d: 300ms; display: flex; flex-direction: column; gap: 12px">
+<a class="mag beat" href="tel:+962792141000" style="display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 34px; background: #0A0A0B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 16px; letter-spacing: .06em; border-radius: 999px">CALL 079 214 1000</a>
 <span style="color: #FFE4E6; font-size: 14px; text-align: center">Ask about memberships &amp; current offers</span>
 </div>
 </div>
@@ -589,7 +799,7 @@ COACH SANAD · BOXING ZONE
 
 <!-- FOOTER -->
 <footer style="background: #0A0A0B; border-top: 1px solid rgba(255,255,255,.08)">
-<div style="max-width: 1320px; margin: 0 auto; padding: 56px 24px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px">
+<div data-stagger style="max-width: 1320px; margin: 0 auto; padding: 56px 24px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px">
 <div>
 <div style="font-family: Anton, Impact, sans-serif; font-size: 34px; letter-spacing: .04em"><span style="color: #FF3B42">H</span>YDROGEN<span style="color: #FF3B42">+</span></div>
 <div style="font-size: 11px; font-weight: 700; letter-spacing: .32em; color: #A1A1AA; margin-top: 4px">FITNESS &amp; SPA · IRBID</div>
@@ -616,6 +826,9 @@ COACH SANAD · BOXING ZONE
 <a class="navlink" href="tel:+962792151000">079 215 1000</a>
 <a class="navlink" href="https://www.instagram.com/hydrogenplusfitness/">Instagram</a>
 </div>
+</div>
+<div style="overflow: hidden; padding: 8px 0 0; text-align: center">
+<div class="bigmark split" id="bigmark" aria-hidden="true">HYDROGEN+</div>
 </div>
 <div class="mpad" style="max-width: 1320px; margin: 0 auto; padding: 20px 24px 32px; border-top: 1px solid rgba(255,255,255,.06); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #8B8B93">
 <span>© 2026 Hydrogen+ Fitness &amp; Spa</span>
@@ -746,7 +959,7 @@ class Component extends DCLogic {
       return {
         short: d.short, name: d.name, selected: on ? 'true' : 'false', isToday: i === tIdx, todayFg: on ? '#FFE4E6' : '#FF8A8F',
         bg: on ? '#E3121B' : '#18181B', fg: on ? '#FFFFFF' : '#E4E4E7', bd: on ? '#E3121B' : 'rgba(255,255,255,.12)',
-        pick: function () { self.setState({ day: i }); }
+        pick: function () { if (i !== self.state.day) { self._swap = 'classes'; } self.setState({ day: i }); }
       };
     });
     var isTodaySel = sel === tIdx; var nextFound = false;
@@ -803,14 +1016,14 @@ class Component extends DCLogic {
         name: k.name, tag: k.tag, photo: k.photo, onNow: on, selected: s ? 'true' : 'false',
         shortShift: has ? fmt(k.a) + ' – ' + fmt(k.b) : k.shortShift,
         bg: s ? 'rgba(227,18,27,.92)' : 'rgba(20,20,22,.72)', bd: s ? '#FF3B42' : 'rgba(255,255,255,.1)', sub: s ? '#FFE4E6' : '#A1A1AA',
-        pick: function () { self.setState({ coach: i }); }
+        pick: function () { if (i !== (self.state.coach || 0)) { self._swap = 'coaches'; } self.setState({ coach: i }); }
       };
     });
     var k = CO[csel]; var hasS = k.a !== undefined;
     var c = {
       num: (csel < 9 ? '0' : '') + (csel + 1), name: k.name, tag: k.tag, role: k.role, photo: k.photo, alt: k.alt,
       shift: hasS ? 'Daily · ' + fmt(k.a) + ' – ' + fmt(k.b) : k.shift, hasShift: hasS, l: hasS ? pct(k.a) : '0%', w: hasS ? pct(k.b - k.a) : '0%',
-      facts: k.facts.map(function (f) { return { k: f[0], v: f[1], color: f[2] }; }),
+      facts: k.facts.map(function (f, j) { return { k: f[0], v: f[1], color: f[2], i: j + 3 }; }),
       hasQuote: !!k.quote, quote: k.quote || '',
       ig: 'https://www.instagram.com/' + k.handle + '/', dm: 'https://ig.me/m/' + k.handle, handle: '@' + k.handle,
       contactHref: k.wa ? 'https://wa.me/' + k.wa : (k.tag === 'BOXING' ? '#boxing' : 'tel:+962792141000'),
@@ -856,12 +1069,267 @@ class Component extends DCLogic {
       var f = document.createDocumentFragment(); render(t, vals, f);
       var fresh = f.firstChild; live.replaceWith(fresh);
       if (key === focusRegion && focusIdx >= 0) { var el = fresh.querySelectorAll('a,button')[focusIdx]; if (el) el.focus({ preventScroll: true }); }
+      if (comp._swap === key) { fresh.classList.add('is-swap'); if (window.__onSwap) window.__onSwap(key, fresh); }
     });
+    comp._swap = null;
   };
   var frag = document.createDocumentFragment();
   for (var c = tpl.firstChild; c; c = c.nextSibling) render(c, comp.renderVals(), frag);
   app.appendChild(frag);
   if (comp.componentDidMount) comp.componentDidMount();
+})();
+</script>
+<script>
+/* Motion layer: intro, headline masks, scroll reveals, counters, marquee tapes, header progress and
+   section indicator, phone menu, services drag. Everything decorative is skipped under reduced motion. */
+(function () {
+  var root = document.documentElement;
+  var motion = root.classList.contains('motion');
+  var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+  function byId(id) { return document.getElementById(id); }
+
+  /* Wrap each word (or letter) in a mask so it can rise into place. */
+  function split(el, letters) {
+    var n = 0;
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (c) {
+        if (c.nodeType === 1) { if (c.tagName !== 'BR') walk(c); return; }
+        if (c.nodeType !== 3) return;
+        var frag = document.createDocumentFragment();
+        var parts = letters ? Array.from(c.nodeValue) : c.nodeValue.split(/(\s+)/);
+        parts.forEach(function (p) {
+          if (!p) return;
+          if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(p)); return; }
+          var w = document.createElement('span'), s = document.createElement('span');
+          w.className = 'w'; s.textContent = p; s.style.setProperty('--i', n++);
+          w.appendChild(s); frag.appendChild(w);
+        });
+        node.replaceChild(frag, c);
+      });
+    })(el);
+  }
+  $$('.split').forEach(function (el) { split(el, el.classList.contains('bigmark')); });
+
+  /* Footer wordmark spans the full width at any size. */
+  var mark = byId('bigmark');
+  function fitMark() {
+    if (!mark) return;
+    var box = Math.min(mark.parentNode.clientWidth - 24, 1800);
+    mark.style.fontSize = '100px';
+    mark.style.fontSize = (100 * box / mark.offsetWidth).toFixed(2) + 'px';
+  }
+  fitMark();
+
+  /* Intro, then the hero copy. */
+  var intro = byId('intro'), heroTitle = byId('hero-title');
+  function heroIn() { root.classList.add('hero-in'); if (heroTitle) heroTitle.classList.add('in'); }
+  if (!motion) { heroIn(); }
+  else if (root.classList.contains('intro') && intro && !location.hash && window.scrollY < 200) {
+    var ended = false, t1 = 0, t2 = 0, skipEvents = ['pointerdown', 'wheel', 'touchstart', 'keydown'];
+    var finish = function () {
+      if (ended) return; ended = true;
+      clearTimeout(t1); clearTimeout(t2); heroIn();
+      skipEvents.forEach(function (ev) { window.removeEventListener(ev, finish); });
+      intro.classList.add('done');
+      setTimeout(function () { root.classList.remove('intro'); if (intro.parentNode) intro.parentNode.removeChild(intro); }, 400);
+    };
+    intro.classList.add('go');
+    t1 = setTimeout(heroIn, 1500); t2 = setTimeout(finish, 2600);
+    skipEvents.forEach(function (ev) { window.addEventListener(ev, finish, { passive: true }); });
+  } else {
+    root.classList.remove('intro');
+    requestAnimationFrame(function () { requestAnimationFrame(heroIn); });
+  }
+
+  /* Count-up numbers. */
+  function countUp(el) {
+    var to = parseFloat(el.getAttribute('data-count')), dec = +(el.getAttribute('data-dec') || 0), t0 = 0;
+    function step(t) {
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / 1700), e = 1 - Math.pow(1 - p, 4);
+      el.textContent = (to * e).toFixed(dec);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* Scroll reveals. */
+  var revealables = $$('[data-reveal],[data-stagger],[data-curtain],.split').filter(function (el) { return el !== heroTitle; });
+  revealables.forEach(function (el) {
+    if (el.hasAttribute('data-stagger')) { Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--i', i); }); }
+  });
+  if (motion && 'IntersectionObserver' in window) {
+    $$('[data-count]').forEach(function (el) { el.textContent = (0).toFixed(+(el.getAttribute('data-dec') || 0)); });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in'); io.unobserve(e.target);
+        $$('[data-count]', e.target).forEach(countUp);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else {
+    revealables.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* On phones, bring the coach card into view after a tap. */
+  window.__onSwap = function (key, fresh) {
+    if (key !== 'coaches' || window.innerWidth >= 900) return;
+    var p = fresh.querySelector('[role="tabpanel"]'); if (!p) return;
+    var r = p.getBoundingClientRect();
+    if (r.top > window.innerHeight * 0.55) window.scrollBy({ top: r.top - 84, behavior: motion ? 'smooth' : 'auto' });
+  };
+
+  /* Magnetic calls to action. */
+  if (motion && fine) {
+    $$('.mag').forEach(function (el) {
+      var r = null;
+      el.addEventListener('pointerenter', function () { el.style.transform = ''; r = el.getBoundingClientRect(); });
+      el.addEventListener('pointermove', function (e) {
+        if (!r) r = el.getBoundingClientRect();
+        el.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.2).toFixed(1) + 'px,' + ((e.clientY - r.top - r.height / 2) * 0.3).toFixed(1) + 'px)';
+      });
+      el.addEventListener('pointerleave', function () { el.style.transform = ''; r = null; });
+    });
+  }
+
+  /* Header: progress line, compact state, section indicator. */
+  var hdr = byId('hdr'), prog = hdr && hdr.querySelector('.hprog i');
+  var links = $$('.navlinks .navlink'), ind = document.querySelector('.nav-ind');
+  var linkFor = {}; links.forEach(function (a) { linkFor[a.getAttribute('href').slice(1)] = a; });
+  var spy = ['top', 'train', 'coaches', 'boxing', 'classes', 'ladies', 'pool', 'kitchen', 'visit'].map(byId).filter(Boolean);
+  var activeId = null;
+  function setActive(id) {
+    if (id === activeId) return; activeId = id;
+    var a = linkFor[id];
+    links.forEach(function (l) { l.classList.toggle('is-active', l === a); });
+    if (!ind) return;
+    if (!a) { ind.style.opacity = '0'; return; }
+    ind.style.width = a.offsetWidth + 'px';
+    ind.style.transform = 'translateX(' + a.offsetLeft + 'px)';
+    ind.style.opacity = '1';
+  }
+
+  /* Hero parallax and drifting outline words. */
+  var heroSec = byId('top'), heroMedia = byId('hero-media'), heroCopy = byId('hero-copy');
+  var drifts = $$('[data-drift]').map(function (el) { return { el: el, dir: +el.getAttribute('data-drift') || 1, sec: el.parentElement }; });
+  var ih = window.innerHeight, heroH = heroSec ? heroSec.offsetHeight : 0;
+
+  function onScroll(y) {
+    var max = document.documentElement.scrollHeight - ih;
+    if (prog) prog.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0).toFixed(4) + ')';
+    if (hdr) hdr.classList.toggle('scrolled', y > 40);
+    var cur = null, line = ih * 0.35;
+    for (var i = 0; i < spy.length; i++) { if (spy[i].getBoundingClientRect().top <= line) cur = spy[i].id; }
+    setActive(cur);
+    if (!motion) return;
+    if (heroMedia && y < heroH + 40) {
+      heroMedia.style.transform = 'translate3d(0,' + (y * 0.35).toFixed(1) + 'px,0)';
+      heroCopy.style.transform = 'translate3d(0,' + (-y * 0.12).toFixed(1) + 'px,0)';
+      heroCopy.style.opacity = Math.max(0, 1 - y / (heroH * 0.8)).toFixed(3);
+    }
+    drifts.forEach(function (d) {
+      var r = d.sec.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > ih) return;
+      var p = (ih - r.top) / (ih + r.height);
+      d.el.style.transform = 'translate3d(' + ((p - 0.5) * 360 * d.dir).toFixed(1) + 'px,0,0)';
+    });
+  }
+
+  /* Marquee tapes: steady drift, pushed by scroll speed, reversed by scrolling up. */
+  var tapes = $$('.tape-track').map(function (el) { return { el: el, dir: +el.getAttribute('data-dir') || 1, x: 0, w: 0 }; });
+  function measureTapes() { tapes.forEach(function (t) { t.w = t.el.scrollWidth / 2; if (!t.x) t.x = -t.w * 0.37; }); }
+  measureTapes();
+  var tapesOn = true;
+  if ('IntersectionObserver' in window && document.querySelector('.tapes')) {
+    new IntersectionObserver(function (es) { tapesOn = es[0].isIntersecting; }).observe(document.querySelector('.tapes'));
+  }
+
+  if (motion) {
+    var lastY = window.scrollY, vel = 0, lastT = 0;
+    onScroll(lastY);
+    (function frame(now) {
+      var dt = lastT ? Math.min(0.05, (now - lastT) / 1000) : 0; lastT = now;
+      var y = window.scrollY, dy = y - lastY;
+      vel += (Math.max(-80, Math.min(80, dy)) - vel) * 0.12;
+      if (Math.abs(vel) < 0.02) vel = 0;
+      if (dy !== 0) { onScroll(y); lastY = y; }
+      if (tapesOn && dt) {
+        tapes.forEach(function (t) {
+          if (!t.w) return;
+          t.x += t.dir * (52 + vel * 11) * dt;
+          if (t.x <= -t.w) t.x += t.w; else if (t.x > 0) t.x -= t.w;
+          var sk = Math.max(-10, Math.min(10, -vel * 0.35 * t.dir));
+          t.el.style.transform = 'translate3d(' + t.x.toFixed(2) + 'px,0,0) skewX(' + sk.toFixed(2) + 'deg)';
+        });
+      }
+      requestAnimationFrame(frame);
+    })(0);
+  } else {
+    tapes.forEach(function (t) { t.el.style.transform = 'translate3d(' + t.x.toFixed(0) + 'px,0,0)'; });
+    window.addEventListener('scroll', function () { onScroll(window.scrollY); }, { passive: true });
+    onScroll(window.scrollY);
+  }
+
+  /* Phone menu. */
+  var burger = document.querySelector('.burger'), menu = byId('mmenu');
+  function setMenu(open) {
+    root.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  if (burger && menu) {
+    burger.addEventListener('click', function () { setMenu(!root.classList.contains('menu-open')); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('menu-open')) { setMenu(false); burger.focus(); } });
+  }
+
+  /* Services stripe: position line, and drag-to-scroll with a mouse. */
+  var track = byId('svc-track'), bar = document.querySelector('.svc-prog i');
+  function svcProg() {
+    if (!track || !bar) return;
+    bar.style.width = (track.clientWidth / track.scrollWidth * 100).toFixed(2) + '%';
+    bar.style.transform = 'translateX(' + (track.scrollLeft / track.clientWidth * 100).toFixed(2) + '%)';
+  }
+  if (track) {
+    track.addEventListener('scroll', svcProg, { passive: true });
+    svcProg();
+    if (fine) {
+      var down = false, moved = false, sx = 0, sl = 0, endTimer = 0;
+      track.addEventListener('pointerdown', function (e) {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        down = true; moved = false; sx = e.clientX; sl = track.scrollLeft; clearTimeout(endTimer);
+      });
+      window.addEventListener('pointermove', function (e) {
+        if (!down) return;
+        var dx = e.clientX - sx;
+        if (!moved && Math.abs(dx) > 6) { moved = true; track.classList.add('dragging'); }
+        if (moved) track.scrollLeft = sl - dx;
+      });
+      window.addEventListener('pointerup', function () {
+        if (!down) return; down = false;
+        if (!moved) return;
+        var pad = parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0, tr = track.getBoundingClientRect(), best = track.scrollLeft, bestD = Infinity;
+        $$('.svc-card', track).forEach(function (c) {
+          var pos = track.scrollLeft + c.getBoundingClientRect().left - tr.left - pad, d = Math.abs(pos - track.scrollLeft);
+          if (d < bestD) { bestD = d; best = pos; }
+        });
+        track.scrollTo({ left: best, behavior: 'smooth' });
+        endTimer = setTimeout(function () { track.classList.remove('dragging'); moved = false; }, 520);
+      });
+    }
+  }
+
+  function onResize() {
+    ih = window.innerHeight; heroH = heroSec ? heroSec.offsetHeight : 0;
+    measureTapes(); fitMark(); svcProg();
+    activeId = '__'; onScroll(window.scrollY);
+    if (window.innerWidth > 860 && root.classList.contains('menu-open')) setMenu(false);
+  }
+  window.addEventListener('resize', onResize);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(onResize);
 })();
 </script>
 </body>

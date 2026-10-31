@@ -2,19 +2,35 @@
 
 A one-page website for Hydrogen+ Fitness & Spa, Irbid. It's plain HTML, CSS and JavaScript, with no build step and no libraries.
 
+**Live demo:** https://aro-software.github.io/demo-hydrogen-plus-fitness/
+
 ## Run it
 
 - **Quickest:** open `index.html` in Chrome, Safari or Firefox.
 - **Recommended:** serve the folder so the videos stream properly. Run `npx serve .` or `python3 -m http.server`, then open the address it prints.
 
-`hydrogen-website-standalone.html` is the same site in one file, with every photo and video embedded (about 34 MB). It's handy for sharing a preview, but use this folder for development.
-
 ## What's inside
 
 ```
 index.html      markup, styles and logic
-assets/         11 looping MP4 videos (H.264, muted) and 21 JPG photos and posters
+assets/         11 looping MP4 videos (H.264, muted), 21 JPG photos and posters,
+                favicon.svg, apple-touch-icon.png and og.jpg (link-preview image)
 ```
+
+## Motion layer
+
+The last `<script>` in `index.html` and the "Final-touch layer" block at the end of the `<style>` add the animation. All of it switches off when the visitor has "reduce motion" turned on.
+
+- **Intro (once per browser session):** the heartbeat line draws, the logo pulses twice, then the screen lifts away in the same three columns as the hero. Any click, scroll or key skips it. It's also skipped when the page opens on a `#section` link.
+- **Headlines:** words rise out of a mask as each heading scrolls into view (`class="split"`).
+- **Reveals:** `data-reveal` (one block), `data-stagger` (children one after another), `data-curtain` (photos and videos uncovered by a lifting panel).
+- **Stats** count up the first time they're seen (`data-count`).
+- **Marquee tapes:** two crossed bands that drift, speed up with scroll and reverse when you scroll up.
+- **Header:** a red reading-progress line, a deeper background after scrolling, and an underline that follows the section on screen.
+- **Coaches and class days:** tapping a coach or a day animates the new card in. The once-a-minute live refresh doesn't replay it.
+- **Services stripe:** drag with the mouse on desktop; a line underneath shows where you are.
+- **Phones:** a menu button opens a full-screen red menu. "Join now" moves out of the header under 480 px, since the bottom bar already has Call.
+- **Footer:** the HYDROGEN+ wordmark is sized to the full width at any screen size.
 
 Fonts (Anton, Inter, Cairo) load from Google Fonts, so they need an internet connection.
 
