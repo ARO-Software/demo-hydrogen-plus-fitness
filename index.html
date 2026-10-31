@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hydrogen+ Fitness &amp; Spa — Irbid</title>
+<meta name="description" content="Hydrogen+ Fitness &amp; Spa, Irbid — strength floor, boxing, classes &amp; Pilates, pool &amp; spa, Hydro Rest kitchen and Hydrogen Lounge.">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700;800&amp;family=Cairo:wght@600;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0A0A0B}
+a{color:#FF3B42}a:hover{color:#FF7076}
+*{box-sizing:border-box}
+.ecg path{stroke-dasharray:1600;stroke-dashoffset:1600;animation:ecg 3.2s cubic-bezier(.6,0,.3,1) infinite}
+@keyframes ecg{0%{stroke-dashoffset:1600}55%{stroke-dashoffset:0}100%{stroke-dashoffset:-1600}}
+.mq{animation:mq 38s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.pulse{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
+.kb{animation:kb 22s ease-in-out infinite alternate;transform-origin:50% 45%;will-change:transform;backface-visibility:hidden}
+.svc-track{scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.svc-track::-webkit-scrollbar{display:none}
+.svc-card video{transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.svc-card:hover video{transform:scale(1.05)}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+.scan{animation:scan 5s linear infinite}
+@keyframes scan{0%{top:-2%;opacity:0}8%{opacity:1}92%{opacity:1}100%{top:102%;opacity:0}}
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:72px}
+a:focus-visible,button:focus-visible{outline:2px solid #FF3B42;outline-offset:3px}
+.mbar{display:none}
+.navlink{color:#D6D6D8;text-decoration:none}
+.navlink:hover{color:#FFFFFF}
+.btn-red:hover{background:#FF2A33 !important}
+.btn-ghost:hover{background:rgba(255,255,255,.08) !important}
+.daybtn:hover{border-color:#FF3B42 !important}
+.outline{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.22)}
+@media (max-width:860px){.navlinks{display:none !important}.hide-sm{display:none !important}.mbar{display:grid}.mpad{padding-bottom:96px !important}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.kb,.mq,.pulse,.scan,.ecg path{animation:none !important}.ecg path{stroke-dashoffset:0}}
+</style>
+
+</head>
+<body>
+<div id="app"></div>
+<noscript><p style="color:#fff;padding:24px;font-family:sans-serif">Please enable JavaScript to view the Hydrogen+ website.</p></noscript>
+
+<!-- Page markup. {{holes}}, <sc-for> and <sc-if> are filled in by the small renderer below. -->
+<template id="page">
+<div style="width: 100%; background: #0A0A0B; color: #F4F4F5; font-family: Inter, system-ui, sans-serif; overflow-x: hidden; overflow-x: clip">
+
+<!-- NAV -->
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(10,10,11,.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.08)">
+<div style="max-width: 1320px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+<a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #FFFFFF" aria-label="Hydrogen+ Fitness and Spa, home">
+<svg width="44" height="28" viewBox="0 0 44 28" aria-hidden="true"><rect x="0" y="9" width="4" height="10" rx="2" fill="#FFFFFF"></rect><rect x="6" y="5" width="5" height="18" rx="2.5" fill="#FFFFFF"></rect><rect x="33" y="5" width="5" height="18" rx="2.5" fill="#FFFFFF"></rect><rect x="40" y="9" width="4" height="10" rx="2" fill="#FFFFFF"></rect><rect x="13" y="11.5" width="18" height="5" fill="#E3121B"></rect><rect x="19.5" y="5" width="5" height="18" fill="#E3121B"></rect></svg>
+<span style="display: flex; flex-direction: column; line-height: 1">
+<span style="font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: .04em"><span style="color: #FF3B42">H</span>YDROGEN<span style="color: #FF3B42">+</span></span>
+<span style="font-size: 9px; font-weight: 700; letter-spacing: .32em; color: #A1A1AA; margin-top: 3px">FITNESS &amp; SPA</span>
+</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 28px; font-size: 14px; font-weight: 500" aria-label="Main">
+<a class="navlink" href="#train">Train</a>
+<a class="navlink" href="#coaches">Coaches</a>
+<a class="navlink" href="#classes">Classes</a>
+<a class="navlink" href="#ladies">For Her</a>
+<a class="navlink" href="#kitchen">Kitchen</a>
+<a class="navlink" href="#visit">Visit &amp; Hours</a>
+</nav>
+<a class="btn-red" href="tel:+962792141000" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 14px; letter-spacing: .04em; border-radius: 999px; white-space: nowrap; flex: 0 0 auto">JOIN NOW
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="top" style="position: relative; min-height: 880px; display: flex; align-items: flex-end">
+<div style="position: absolute; inset: 0; overflow: hidden; background: #0A0A0B">
+<video class="kb" data-bg="1" src="assets/hero.mp4" poster="assets/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></video>
+</div>
+<div class="hide-sm" aria-hidden="true" style="position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); pointer-events: none">
+<div style="border-right: 3px solid #0A0A0B"></div>
+<div style="border-right: 3px solid #0A0A0B; position: relative"><div class="scan" style="position: absolute; left: 0; right: 0; height: 2px; background: #FF2A33; box-shadow: 0 0 18px 4px rgba(255,42,51,.6)"></div></div>
+<div></div>
+</div>
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,11,.6) 0%, rgba(10,10,11,.2) 30%, rgba(10,10,11,.55) 62%, rgba(10,10,11,.96) 88%, #0A0A0B 100%)"></div>
+<svg class="ecg" viewBox="0 0 1440 120" preserveAspectRatio="none" style="position: absolute; left: 0; right: 0; top: 46%; width: 100%; height: 120px; opacity: .9" aria-hidden="true"><path d="M0 60 H520 L548 60 L566 18 L590 104 L612 6 L634 82 L650 60 H900 L918 60 L930 40 L944 74 L956 60 H1440" fill="none" stroke="#FF2A33" stroke-width="3" stroke-linejoin="round"></path></svg>
+<div style="position: relative; width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 24px 72px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<a data-region="heroOpen" href="#visit" style="display: inline-flex; align-items: center; gap: 10px; min-height: 40px; padding: 8px 14px; border: 1px solid {{openBd}}; border-radius: 999px; background: rgba(10,10,11,.6); font-size: 13px; font-weight: 800; letter-spacing: .08em; color: #FFFFFF; text-decoration: none">
+<span class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: {{openDot}}; display: inline-block"></span>
+{{openText}}
+</a>
+<span style="font-size: 13px; font-weight: 600; letter-spacing: .06em; color: #D4D4D8">IRBID · AL HUSN ROAD · OPPOSITE GRANADA COLLEGE</span>
+</div>
+<h1 style="margin: 24px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(64px, 11vw, 176px); line-height: .88; letter-spacing: -.005em; text-transform: uppercase">Power<br>starts <span style="color: #FF2A33">here.</span></h1>
+<p dir="rtl" lang="ar" style="margin: 20px 0 0; font-family: Cairo, sans-serif; font-weight: 800; font-size: clamp(22px, 2.4vw, 34px); color: #E4E4E7; text-align: left">رحلتك نحو نسخة أقوى من نفسك تبدأ من هنا</p>
+<div style="margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center">
+<a class="btn-red" href="tel:+962792141000" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 30px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 15px; letter-spacing: .06em; border-radius: 999px">BOOK A TOUR</a>
+<a class="btn-ghost" href="#classes" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 30px; border: 1px solid rgba(255,255,255,.35); color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 15px; letter-spacing: .06em; border-radius: 999px">TODAY'S CLASSES</a>
+</div>
+</div>
+</section>
+
+<!-- MARQUEE -->
+<div style="background: #E3121B; color: #FFFFFF; overflow: hidden; border-top: 1px solid #FF3B42; border-bottom: 1px solid #A80C13" aria-hidden="true">
+<div class="mq" style="display: flex; width: max-content; padding: 18px 0; font-family: Anton, Impact, sans-serif; font-size: 30px; letter-spacing: .06em; white-space: nowrap">
+<span style="padding-right: 48px">BODYBUILDING ✚ CARDIO ✚ CLASSES ✚ BOXING ✚ POOL ✚ SPA ✚ NUTRITION ✚ LOUNGE ✚ TRAIN. REST. RECHARGE. ✚ </span>
+<span style="padding-right: 48px">BODYBUILDING ✚ CARDIO ✚ CLASSES ✚ BOXING ✚ POOL ✚ SPA ✚ NUTRITION ✚ LOUNGE ✚ TRAIN. REST. RECHARGE. ✚ </span>
+</div>
+</div>
+
+<!-- FACTS STRIP -->
+<section style="max-width: 1320px; margin: 0 auto; padding: 72px 24px 24px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; overflow: hidden">
+<div style="background: #0A0A0B; padding: 32px">
+<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF">18<span style="color: #FF2A33">H</span></div>
+<div style="margin-top: 10px; color: #A1A1AA; font-size: 15px">Open daily — 6 AM to midnight</div>
+</div>
+<div style="background: #0A0A0B; padding: 32px">
+<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF">35<span style="color: #FF2A33">+</span></div>
+<div style="margin-top: 10px; color: #A1A1AA; font-size: 15px">Group classes every week</div>
+</div>
+<div style="background: #0A0A0B; padding: 32px">
+<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF">18.4<span style="color: #FF2A33">K</span></div>
+<div style="margin-top: 10px; color: #A1A1AA; font-size: 15px">Strong community on Instagram</div>
+</div>
+<div style="background: #0A0A0B; padding: 32px">
+<div style="font-family: Anton, Impact, sans-serif; font-size: 64px; line-height: 1; color: #FFFFFF">7<span style="color: #FF2A33">+</span></div>
+<div style="margin-top: 10px; color: #A1A1AA; font-size: 15px">Champion &amp; certified coaches on the floor</div>
+</div>
+</div>
+</section>
+
+<!-- TRAIN / BENTO -->
+<section id="train" style="padding: 96px 0 40px">
+<div style="max-width: 1320px; margin: 0 auto; padding: 0 24px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div>
+<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">01 — EVERYTHING UNDER ONE ROOF</div>
+<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 96px); line-height: .92; text-transform: uppercase">The biggest gym<br>in the north.</h2>
+</div>
+<div style="max-width: 440px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start">
+<p style="margin: 0; color: #A1A1AA; font-size: 17px; line-height: 1.6">Strength floor, boxing ring, studio &amp; Pilates, pool &amp; spa, a healthy kitchen and a lounge. Show up for one thing — stay for all of it.</p>
+<div style="display: flex; gap: 10px; align-items: center">
+<button onClick="{{svcPrev}}" aria-label="Previous service" class="btn-ghost" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: transparent; color: #FFFFFF; cursor: pointer; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<button onClick="{{svcNext}}" aria-label="Next service" class="btn-red" style="width: 52px; height: 52px; border-radius: 50%; border: 0; background: #E3121B; color: #FFFFFF; cursor: pointer; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+<span style="margin-left: 6px; font-size: 13px; font-weight: 600; letter-spacing: .08em; color: #8B8B93">SWIPE OR SCROLL</span>
+</div>
+</div>
+</div>
+</div>
+
+<div id="svc-track" class="svc-track" style="margin-top: 44px; display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: max(24px, calc((100% - 1272px) / 2)); padding: 0 max(24px, calc((100% - 1272px) / 2)) 8px">
+<sc-for list="{{services}}" as="s" hint-placeholder-count="6">
+<a href="{{s.href}}" class="svc-card" style="position: relative; flex: 0 0 clamp(280px, 30vw, 400px); height: clamp(520px, 62vh, 640px); border-radius: 28px; overflow: hidden; scroll-snap-align: start; display: block; color: #FFFFFF; text-decoration: none; background: #141416; border: 1px solid rgba(255,255,255,.08)">
+<video data-bg="1" src="{{s.video}}" poster="{{s.poster}}" muted loop playsinline preload="metadata" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></video>
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,11,.55) 0%, rgba(10,10,11,0) 26%, rgba(10,10,11,.15) 50%, rgba(10,10,11,.94) 100%)"></div>
+<div style="position: absolute; top: 20px; left: 22px; right: 22px; display: flex; justify-content: space-between; align-items: center">
+<span style="padding: 7px 12px; border-radius: 999px; background: {{s.accent}}; font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #FFFFFF">{{s.tag}}</span>
+<span style="font-family: Anton, Impact, sans-serif; font-size: 22px; color: rgba(255,255,255,.75)">{{s.num}}<span style="color: rgba(255,255,255,.35)"> / 06</span></span>
+</div>
+<div style="position: absolute; left: 24px; right: 24px; bottom: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: Anton, Impact, sans-serif; font-size: clamp(36px, 3.4vw, 50px); line-height: .95; text-transform: uppercase">{{s.title}}</div>
+<div style="color: #D4D4D8; font-size: 15px; line-height: 1.55">{{s.text}}</div>
+<div style="display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 13px; font-weight: 800; letter-spacing: .1em; color: #FFFFFF">{{s.cta}}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+</div>
+</a>
+</sc-for>
+</div>
+</section>
+
+<!-- COACHES -->
+<section id="coaches" style="position: relative; margin-top: 80px; padding: 112px 0 96px; overflow: hidden">
+<div style="position: absolute; inset: 0; overflow: hidden; background: #0A0A0B">
+<video class="kb" data-bg="1" src="assets/team-floor.mp4" poster="assets/team-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></video>
+</div>
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, #0A0A0B 0%, rgba(10,10,11,.72) 14%, rgba(10,10,11,.78) 60%, #0A0A0B 100%)"></div>
+<div class="outline hide-sm" aria-hidden="true" style="position: absolute; top: 40px; left: 0; right: 0; text-align: center; font-family: Anton, Impact, sans-serif; font-size: 240px; line-height: 1; white-space: nowrap; pointer-events: none">THE TEAM</div>
+
+<div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 0 24px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div>
+<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">02 — THE COACHES</div>
+<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 96px); line-height: .92; text-transform: uppercase">Know who's<br>coaching you.</h2>
+</div>
+<div style="max-width: 420px">
+<p style="margin: 0; color: #D4D4D8; font-size: 17px; line-height: 1.6">National medalists, certified trainers and competing athletes. Tap a coach to see their story, their hours and how to reach them.</p>
+<div data-region="onNow" style="margin-top: 14px; display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.4); font-size: 13px; font-weight: 700; color: #BBF7D0">
+<span class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: #22C55E; display: inline-block"></span>
+{{onNowText}}
+</div>
+</div>
+</div>
+
+<div data-region="coaches" style="margin-top: 44px; display: flex; flex-wrap: wrap; gap: 16px; align-items: stretch">
+
+<div role="tablist" aria-label="Coaches" style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{coaches}}" as="r" hint-placeholder-count="7">
+<button role="tab" aria-selected="{{r.selected}}" onClick="{{r.pick}}" style="display: flex; align-items: center; gap: 14px; width: 100%; min-height: 68px; padding: 10px 16px 10px 10px; border-radius: 18px; cursor: pointer; text-align: left; font-family: Inter, sans-serif; background: {{r.bg}}; border: 1px solid {{r.bd}}; color: #FFFFFF; backdrop-filter: blur(10px)">
+<img src="{{r.photo}}" alt="" style="width: 48px; height: 48px; border-radius: 12px; object-fit: cover; flex: 0 0 auto">
+<span style="flex: 1; min-width: 0">
+<span style="display: block; font-family: Anton, Impact, sans-serif; font-size: 21px; letter-spacing: .02em; text-transform: uppercase; line-height: 1.1">{{r.name}}</span>
+<span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 600; letter-spacing: .06em; color: {{r.sub}}">{{r.tag}} · {{r.shortShift}}</span>
+</span>
+<sc-if value="{{r.onNow}}" hint-placeholder-val="{{ false }}">
+<span class="pulse" aria-label="On the floor now" style="width: 9px; height: 9px; border-radius: 50%; background: #22C55E; flex: 0 0 auto"></span>
+</sc-if>
+</button>
+</sc-for>
+</div>
+
+<div role="tabpanel" style="flex: 999 1 560px; min-width: 0; border-radius: 28px; overflow: hidden; background: rgba(20,20,22,.88); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(14px); display: flex; flex-wrap: wrap">
+<div style="flex: 1 1 280px; position: relative; min-height: 420px; background: #0A0A0B">
+<img src="{{c.photo}}" alt="{{c.alt}}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.65) 100%)"></div>
+<div style="position: absolute; top: 16px; left: 16px; padding: 8px 12px; border-radius: 999px; background: #E3121B; font-size: 12px; font-weight: 800; letter-spacing: .14em; color: #FFFFFF">{{c.tag}}</div>
+<div style="position: absolute; bottom: 12px; right: 18px; font-family: Anton, Impact, sans-serif; font-size: 80px; line-height: 1; color: rgba(255,255,255,.22)">{{c.num}}</div>
+</div>
+<div style="flex: 1.3 1 320px; padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 18px">
+<div>
+<h3 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(38px, 4vw, 56px); line-height: .95; text-transform: uppercase">{{c.name}}</h3>
+<div style="margin-top: 8px; color: #FF3B42; font-weight: 700; font-size: 14px; letter-spacing: .06em">{{c.role}}</div>
+</div>
+
+<div style="padding: 14px 16px; border-radius: 16px; background: #0A0A0B; border: 1px solid rgba(255,255,255,.08)">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: .16em; color: #8B8B93">ON THE FLOOR</span>
+<span style="font-weight: 700; font-size: 15px; color: #FFFFFF">{{c.shift}}</span>
+</div>
+<sc-if value="{{c.hasShift}}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 10px; position: relative; height: 10px; border-radius: 999px; background: #1F1F23; overflow: hidden">
+<div style="position: absolute; top: 0; bottom: 0; border-radius: 999px; background: #E3121B; left: {{c.l}}; width: {{c.w}}"></div>
+</div>
+<div style="margin-top: 6px; display: flex; justify-content: space-between; font-size: 11px; color: #71717A"><span>12 AM</span><span>6 AM</span><span>12 PM</span><span>6 PM</span><span>12 AM</span></div>
+</sc-if>
+</div>
+
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #D4D4D8">
+<sc-for list="{{c.facts}}" as="f" hint-placeholder-count="3">
+<li style="display: flex; gap: 12px; align-items: baseline"><span style="flex: 0 0 auto; min-width: 44px; font-family: Anton, Impact, sans-serif; font-size: 15px; color: {{f.color}}">{{f.k}}</span><span>{{f.v}}</span></li>
+</sc-for>
+</ul>
+
+<sc-if value="{{c.hasQuote}}" hint-placeholder-val="{{ false }}">
+<blockquote style="margin: 0; padding: 14px 16px; border-radius: 14px; background: rgba(227,18,27,.1); font-size: 16px; line-height: 1.5; color: #FFFFFF; font-weight: 600">“{{c.quote}}”</blockquote>
+</sc-if>
+
+<div style="margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px">
+<a href="{{c.contactHref}}" class="btn-red" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: .06em; border-radius: 999px">{{c.contactLabel}}</a>
+<a href="{{c.dm}}" class="btn-ghost" style="display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 18px; border: 1px solid rgba(255,255,255,.28); color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 13px; border-radius: 999px">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg>
+Message</a>
+<a href="{{c.ig}}" class="btn-ghost" style="display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 18px; border: 1px solid rgba(255,255,255,.28); color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 13px; border-radius: 999px">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg>
+{{c.handle}}</a>
+</div>
+</div>
+</div>
+
+</div>
+
+<div style="margin-top: 16px; padding: 20px 26px; border-radius: 20px; background: rgba(20,20,22,.85); border: 1px solid rgba(255,255,255,.08); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="font-size: 15px; color: #D4D4D8"><span style="font-weight: 700; color: #FFFFFF">Studio class coaches</span> — Abeer, Farah, Katie, Lesya, Marwa, Sara &amp; Svitlana · <a href="#classes">see the schedule</a></div>
+<a class="btn-red" href="tel:+962792141000" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: .06em; border-radius: 999px">BOOK A PERSONAL TRAINER</a>
+</div>
+</div>
+</section>
+
+<!-- BOXING SPLIT -->
+<section id="boxing" style="max-width: 1320px; margin: 0 auto; padding: 72px 24px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0; border-radius: 28px; overflow: hidden; background: #141416; border: 1px solid rgba(255,255,255,.08)">
+<div style="position: relative; min-height: 560px; overflow: hidden; background: #0A0A0B">
+<video data-bg="1" src="assets/boxing-sanad.mp4" poster="assets/boxing-sanad.jpg" muted loop playsinline preload="metadata" aria-label="Coach Sanad Al-Hussien in the Hydrogen+ boxing zone" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></video>
+<div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,20,22,0) 70%, rgba(20,20,22,.6) 100%)"></div>
+<div style="position: absolute; left: 20px; bottom: 20px; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; background: rgba(10,10,11,.7); border: 1px solid rgba(255,255,255,.14); font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #FFFFFF">
+<span class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: #FF2A33; display: inline-block"></span>
+COACH SANAD · BOXING ZONE
+</div>
+</div>
+<div style="padding: clamp(32px, 5vw, 72px); display: flex; flex-direction: column; justify-content: center; gap: 22px">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">03 — THE RING</div>
+<h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 5vw, 80px); line-height: .95; text-transform: uppercase">Power doesn't start with the first punch.</h2>
+<p style="margin: 0; color: #A1A1AA; font-size: 17px; line-height: 1.65">It starts the moment you step into the ring. Train with Coach Sanad Al-Hussien — Kingdom Boxing gold medalist and Jordan Universities champion 2021–2024 — and build skill, speed and the kind of conditioning machines can't give you.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a href="#coaches" style="padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none">Coach Sanad Al-Hussien</a>
+<span style="padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); font-size: 14px; font-weight: 600">Bag &amp; pad work</span>
+<span style="padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); font-size: 14px; font-weight: 600">All levels</span>
+</div>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 20px; background: #0A0A0B; border: 1px solid rgba(255,255,255,.1)">
+<img src="assets/coach-sanad.jpg" alt="Coach Sanad Al-Hussien" style="width: 84px; height: 104px; border-radius: 14px; object-fit: cover; flex: 0 0 auto">
+<div style="min-width: 0">
+<div style="font-size: 11px; font-weight: 800; letter-spacing: .18em; color: #FF3B42">YOUR BOXING COACH</div>
+<div style="margin-top: 4px; font-family: Anton, Impact, sans-serif; font-size: 26px; line-height: 1.05; text-transform: uppercase">Sanad Al-Hussien</div>
+<div style="margin-top: 6px; font-size: 13px; color: #A1A1AA; line-height: 1.5">Kingdom Boxing gold 2018 · Jordan Universities champion 2021–2024 · B.A. P.E., Yarmouk University</div>
+<a href="https://www.instagram.com/coach_sanad_alhussien/" style="display: inline-flex; align-items: center; min-height: 32px; margin-top: 4px; font-size: 13px; font-weight: 600">@coach_sanad_alhussien</a>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a class="btn-red" href="tel:+962792141000" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 14px; letter-spacing: .06em; border-radius: 999px">BOOK A BOXING SESSION</a>
+<a class="btn-ghost" href="https://ig.me/m/coach_sanad_alhussien" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 22px; border: 1px solid rgba(255,255,255,.3); color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 14px; border-radius: 999px">MESSAGE COACH SANAD</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CLASSES -->
+<section id="classes" style="position: relative; padding: 96px 0; background: #111113; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06)">
+<div class="outline hide-sm" aria-hidden="true" style="position: absolute; top: 24px; left: 0; right: 0; text-align: center; font-family: Anton, Impact, sans-serif; font-size: 220px; line-height: 1; white-space: nowrap; pointer-events: none">SCHEDULE</div>
+<div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 0 24px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div>
+<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">04 — GYM CLASS SCHEDULE</div>
+<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 96px); line-height: .92; text-transform: uppercase">Pick your day.<br>Own your hour.</h2>
+</div>
+<p style="margin: 0; max-width: 380px; color: #A1A1AA; font-size: 16px; line-height: 1.6">Cycling, Tabata, Zumba, Pilates, Yoga, Belly Dance and more — six sessions a day, Saturday to Thursday. Friday is for rest.</p>
+</div>
+
+<div data-region="classes">
+<div role="tablist" aria-label="Day of the week" style="margin-top: 40px; display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px">
+<sc-for list="{{days}}" as="d" hint-placeholder-count="6">
+<button class="daybtn" role="tab" aria-selected="{{d.selected}}" onClick="{{d.pick}}" style="flex: 0 0 auto; min-width: 128px; min-height: 64px; padding: 10px 18px; border-radius: 16px; cursor: pointer; text-align: left; font-family: Inter, sans-serif; background: {{d.bg}}; color: {{d.fg}}; border: 1px solid {{d.bd}}">
+<span style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .16em; opacity: .8">{{d.short}}</span>
+<span style="display: block; margin-top: 4px; font-family: Anton, Impact, sans-serif; font-size: 22px; letter-spacing: .02em">{{d.name}}</span>
+<sc-if value="{{d.isToday}}" hint-placeholder-val="{{ false }}">
+<span style="display: block; margin-top: 2px; font-size: 11px; font-weight: 800; letter-spacing: .16em; color: {{d.todayFg}}">TODAY</span>
+</sc-if>
+</button>
+</sc-for>
+</div>
+
+<sc-if value="{{dayNote}}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 20px; font-size: 14px; color: #FCA5A5; font-weight: 600">{{dayNote}}</div>
+</sc-if>
+<div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px">
+<sc-for list="{{slots}}" as="s" hint-placeholder-count="6">
+<div style="position: relative; display: flex; align-items: center; gap: 22px; padding: 24px; border-radius: 20px; background: #18181B; border: 1px solid {{s.bd}}; min-height: 120px; opacity: {{s.op}}">
+<sc-if value="{{s.next}}" hint-placeholder-val="{{ false }}">
+<span style="position: absolute; top: 12px; right: 14px; padding: 4px 10px; border-radius: 999px; background: #E3121B; font-size: 10px; font-weight: 800; letter-spacing: .16em; color: #FFFFFF">{{s.badge}}</span>
+</sc-if>
+<div style="flex: 0 0 auto; width: 84px; text-align: center; padding: 12px 0; border-radius: 14px; background: #0A0A0B; border: 1px solid rgba(255,255,255,.08)">
+<div style="font-family: Anton, Impact, sans-serif; font-size: 36px; line-height: 1; color: #FF3B42">{{s.h}}</div>
+<div style="margin-top: 4px; font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #A1A1AA">{{s.ap}}</div>
+</div>
+<div style="min-width: 0">
+<div style="font-family: Anton, Impact, sans-serif; font-size: 28px; line-height: 1.05; text-transform: uppercase; color: #FFFFFF">{{s.cls}}</div>
+<div style="margin-top: 8px; font-size: 14px; color: #A1A1AA">with <span style="color: #FFFFFF; font-weight: 600">Coach {{s.coach}}</span> · 60 min</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; color: #A1A1AA; font-size: 14px">
+<span>All classes are 60 minutes. Spots are limited — call ahead to reserve.</span>
+<a class="btn-red" href="tel:+962792141000" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: .06em; border-radius: 999px">RESERVE A SPOT</a>
+</div>
+</div>
+</section>
+
+<!-- FOR HER -->
+<section id="ladies" style="position: relative; padding: 120px 0 96px; overflow: hidden">
+<div style="position: absolute; inset: 0; overflow: hidden; background: #0A0A0B">
+<video class="kb" data-bg="1" src="assets/ladies.mp4" poster="assets/ladies-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></video>
+</div>
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, #0A0A0B 0%, rgba(24,8,14,.62) 16%, rgba(24,8,14,.7) 55%, #0A0A0B 100%)"></div>
+<div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 0 24px">
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px">
+<div style="max-width: 760px">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF8FB1">HYDROGEN FOR HER</div>
+<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(54px, 7.5vw, 124px); line-height: .88; text-transform: uppercase">Your strength<br><span style="color: #FF5C8A">starts with one step.</span></h2>
+<p dir="rtl" lang="ar" style="margin: 18px 0 0; font-family: Cairo, sans-serif; font-weight: 800; font-size: clamp(20px, 2.2vw, 30px); color: #FCE7F3; text-align: left">اختاري نفسكِ، اصنعي قوتكِ، وكوني النسخة الأقوى منكِ</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; flex: 0 1 460px">
+<div style="padding: 16px; border-radius: 18px; background: rgba(10,10,11,.72); border: 1px solid rgba(255,143,177,.35); backdrop-filter: blur(10px)">
+<div style="font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #FF8FB1">LADIES' GYM</div>
+<div style="margin-top: 6px; font-family: Anton, Impact, sans-serif; font-size: 24px">8 AM – 11 PM</div>
+<div style="margin-top: 2px; font-size: 12px; color: #A1A1AA">Every day</div>
+</div>
+<div style="padding: 16px; border-radius: 18px; background: rgba(10,10,11,.72); border: 1px solid rgba(255,143,177,.35); backdrop-filter: blur(10px)">
+<div style="font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #FF8FB1">LADIES' POOL</div>
+<div style="margin-top: 6px; font-family: Anton, Impact, sans-serif; font-size: 24px">9 AM – 5 PM</div>
+<div style="margin-top: 2px; font-size: 12px; color: #A1A1AA">Every day</div>
+</div>
+<div style="padding: 16px; border-radius: 18px; background: rgba(10,10,11,.72); border: 1px solid rgba(255,143,177,.35); backdrop-filter: blur(10px)">
+<div style="font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #FF8FB1">POOL DAY</div>
+<div style="margin-top: 6px; font-family: Anton, Impact, sans-serif; font-size: 24px">FRIDAYS</div>
+<div style="margin-top: 2px; font-size: 12px; color: #A1A1AA">10 AM – 6 PM</div>
+</div>
+</div>
+</div>
+
+<div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px">
+
+<div style="padding: 26px; border-radius: 24px; background: rgba(10,10,11,.78); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: 12px">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FF5C8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"></circle><path d="M4 20h16M7 20l2-6 3 1 3-1 2 6"></path><path d="M9 14l-2-5h10l-2 5"></path></svg>
+<div style="font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #FF8FB1">FIRST IN IRBID</div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 30px; line-height: 1; text-transform: uppercase">The Pilates Room</div>
+<p style="margin: 0; color: #D4D4D8; font-size: 15px; line-height: 1.6">Irbid's first dedicated Pilates room — reformer machines, a calm private space and a certified female coach.</p>
+</div>
+
+<div style="padding: 26px; border-radius: 24px; background: rgba(10,10,11,.78); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: 12px">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FF5C8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4" r="2"></circle><path d="M7 21l3-6 3 2v4"></path><path d="M13 17l2-5-4-2-3 3"></path><path d="M15 12l3 1 2-3"></path></svg>
+<div style="font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #FF8FB1">DANCE &amp; STUDIO</div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 30px; line-height: 1; text-transform: uppercase">Zumba, Belly Dance &amp; more</div>
+<p style="margin: 0; color: #D4D4D8; font-size: 15px; line-height: 1.6">Zumba, Belly Dance, Aerobic and Step classes every week — plus Yoga, Pilates Mat, Power Glutes, Hips &amp; Abs and Inner Thigh.</p>
+<a href="#classes" style="font-weight: 700; font-size: 14px; color: #FF8FB1; min-height: 32px; display: inline-flex; align-items: center">See the weekly schedule</a>
+</div>
+
+<div style="padding: 26px; border-radius: 24px; background: rgba(10,10,11,.78); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: 12px">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FF5C8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0"></path><path d="M2 20c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0"></path><circle cx="15" cy="6" r="2"></circle><path d="M6 12l4-4 4 2 3 2"></path></svg>
+<div style="font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #FF8FB1">LEARN TO SWIM</div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 30px; line-height: 1; text-transform: uppercase">Ladies' swim courses</div>
+<p style="margin: 0; color: #D4D4D8; font-size: 15px; line-height: 1.6">Swimming courses just for women, taught by professional female instructors with North Sharks Academy — at your pace, with complete privacy.</p>
+</div>
+
+<div style="padding: 26px; border-radius: 24px; background: rgba(10,10,11,.78); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: 12px">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FF5C8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
+<div style="font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #FF8FB1">PRIVACY FIRST</div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 30px; line-height: 1; text-transform: uppercase">Ladies-only hours</div>
+<p style="margin: 0; color: #D4D4D8; font-size: 15px; line-height: 1.6">Dedicated women's hours in the gym and the pool, with screened pool sessions so you can train and swim comfortably.</p>
+</div>
+
+<div style="padding: 26px; border-radius: 24px; background: rgba(10,10,11,.78); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: 12px">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FF5C8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4.4 0-8-3.6-8-8 0-3 2-6 4-6 1.5 0 2.5 1 4 1s2.5-1 4-1c2 0 4 3 4 6 0 4.4-3.6 8-8 8z"></path><path d="M12 8c0-2 1-4 3-5"></path></svg>
+<div style="font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #FF8FB1">EAT WELL</div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 30px; line-height: 1; text-transform: uppercase">Nutrition &amp; meal plans</div>
+<p style="margin: 0; color: #D4D4D8; font-size: 15px; line-height: 1.6">Our in-house nutritionist is available daily, 9 AM – 5 PM, and Hydro Rest prepares calorie-counted meal plans to match.</p>
+</div>
+
+<div style="padding: 26px; border-radius: 24px; background: rgba(10,10,11,.78); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: 12px">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FF5C8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22l4-9 4 9"></path><path d="M12 13c-3-3-4-6-2-8s4 0 2 3c-2-3 0-5 2-3s1 5-2 8z"></path></svg>
+<div style="font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #FF8FB1">COMMUNITY &amp; SUPPORT</div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 30px; line-height: 1; text-transform: uppercase">Ladies Nights &amp; Her Story</div>
+<p style="margin: 0; color: #D4D4D8; font-size: 15px; line-height: 1.6">Elegant Ladies Nights at Hydrogen Lounge, and Pink October awareness with <span style="color: #FFFFFF; font-weight: 600">Her Story | حكايتها قوة</span> — because support starts with us.</p>
+</div>
+
+</div>
+
+<div style="margin-top: 16px; padding: 22px 26px; border-radius: 22px; background: linear-gradient(90deg, rgba(255,92,138,.22), rgba(227,18,27,.22)); border: 1px solid rgba(255,143,177,.4); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 28px; text-transform: uppercase">Back to school. Back to <span style="color: #FF8FB1">you.</span></div>
+<div style="margin-top: 4px; color: #FCE7F3; font-size: 15px">Start your mornings with energy, movement and time for yourself.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a href="tel:+962792141000" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; background: #FF5C8A; color: #1A0710; text-decoration: none; font-weight: 800; font-size: 14px; letter-spacing: .06em; border-radius: 999px">BOOK A LADIES' TOUR</a>
+<a class="btn-ghost" href="#classes" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 22px; border: 1px solid rgba(255,255,255,.35); color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 14px; border-radius: 999px">CLASS SCHEDULE</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- POOL + LOUNGE -->
+<section style="max-width: 1320px; margin: 0 auto; padding: 96px 24px 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px">
+
+<div id="pool" style="position: relative; min-height: 640px; border-radius: 28px; overflow: hidden; background: #0C1A22">
+<img src="assets/pool.jpg" alt="Indoor pool with water cascade under a glass roof" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,16,24,.15) 0%, rgba(4,16,24,.92) 78%)"></div>
+<div style="position: absolute; left: 36px; right: 36px; bottom: 36px">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #7DD3FC">05 — HYDROGEN POOL &amp; SPA</div>
+<h2 style="margin: 12px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 4.6vw, 72px); line-height: .95; text-transform: uppercase">Dive in.<br>Breathe out.</h2>
+<p style="margin: 14px 0 0; color: #D4E7F0; font-size: 16px; line-height: 1.6; max-width: 460px">Swim laps, cool down after a session or unwind in the spa. Swim courses for kids and ladies run with professional instructors from North Sharks Academy.</p>
+<div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px">
+<span style="padding: 10px 16px; border-radius: 999px; background: rgba(125,211,252,.14); border: 1px solid rgba(125,211,252,.35); font-size: 14px; font-weight: 600">Ladies' pool · daily 9 AM – 5 PM</span>
+<a href="#ladies" style="padding: 10px 16px; border-radius: 999px; background: rgba(125,211,252,.14); border: 1px solid rgba(125,211,252,.35); font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none">Ladies' pool day · Fridays</a>
+</div>
+</div>
+</div>
+
+<div id="lounge" style="position: relative; min-height: 640px; border-radius: 28px; overflow: hidden; background: #1A1714">
+<img src="assets/lounge.jpg" alt="Hydrogen Lounge rooftop terrace with woven chairs" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,14,10,.1) 0%, rgba(20,14,10,.92) 78%)"></div>
+<div style="position: absolute; left: 36px; right: 36px; bottom: 36px">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FDBA74">06 — HYDROGEN LOUNGE</div>
+<h2 style="margin: 12px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 4.6vw, 72px); line-height: .95; text-transform: uppercase">After the work,<br>the night.</h2>
+<p style="margin: 14px 0 0; color: #F1E6DC; font-size: 16px; line-height: 1.6; max-width: 460px">Relaxed seating, your favourite drinks, big-match nights and ladies' evenings — a different vibe every visit.</p>
+<div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px">
+<span style="padding: 10px 16px; border-radius: 999px; background: rgba(253,186,116,.14); border: 1px solid rgba(253,186,116,.35); font-size: 14px; font-weight: 600">Daily · 6 PM – 2 AM</span>
+<a href="tel:+962798370157" style="padding: 10px 16px; border-radius: 999px; background: rgba(253,186,116,.14); border: 1px solid rgba(253,186,116,.35); font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none">Reservations 079 837 0157</a>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- KITCHEN -->
+<section id="kitchen" style="position: relative; min-height: 820px; display: flex; align-items: flex-end; margin-top: 56px">
+<div style="position: absolute; inset: 0; overflow: hidden; background: #0A0A0B">
+<video class="kb" data-bg="1" src="assets/kitchen.mp4" poster="assets/kitchen-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"></video>
+</div>
+<div class="hide-sm" aria-hidden="true" style="position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); pointer-events: none">
+<div style="border-right: 3px solid #0A0A0B"></div>
+<div style="border-right: 3px solid #0A0A0B"></div>
+<div></div>
+</div>
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, #0A0A0B 0%, rgba(10,10,11,.35) 18%, rgba(10,10,11,.45) 50%, rgba(10,10,11,.95) 85%, #0A0A0B 100%)"></div>
+<div style="position: relative; width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 24px 72px">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #4ADE80">07 — HYDRO REST KITCHEN</div>
+<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(56px, 8vw, 132px); line-height: .88; text-transform: uppercase">Workout done.<br><span style="color: #4ADE80">Hunger on.</span></h2>
+<p dir="rtl" lang="ar" style="margin: 18px 0 0; font-family: Cairo, sans-serif; font-weight: 800; font-size: clamp(20px, 2.2vw, 30px); color: #E4E4E7; text-align: left">وجبتك المتكاملة، بروتين، وصحة، وأكيد زاكي</p>
+<p style="margin: 16px 0 0; max-width: 560px; color: #D4D4D8; font-size: 17px; line-height: 1.6">Our in-house restaurant cooks fresh, healthy plates right next to the gym floor — grilled proteins, balanced meals and good coffee, made for people who train.</p>
+<div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; max-width: 1000px">
+<div style="padding: 20px; border-radius: 18px; background: rgba(10,10,11,.7); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px)">
+<div style="font-family: Anton, Impact, sans-serif; font-size: 24px; text-transform: uppercase">Meal plans</div>
+<div style="margin-top: 6px; color: #A1A1AA; font-size: 14px; line-height: 1.5">Subscriptions that are fresh, balanced and calorie-counted.</div>
+</div>
+<div style="padding: 20px; border-radius: 18px; background: rgba(10,10,11,.7); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px)">
+<div style="font-family: Anton, Impact, sans-serif; font-size: 24px; text-transform: uppercase">Post-workout plates</div>
+<div style="margin-top: 6px; color: #A1A1AA; font-size: 14px; line-height: 1.5">Training's over, hunger's started — your meal is ready.</div>
+</div>
+<div style="padding: 20px; border-radius: 18px; background: rgba(10,10,11,.7); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px)">
+<div style="font-family: Anton, Impact, sans-serif; font-size: 24px; text-transform: uppercase">Protein &amp; nutrition</div>
+<div style="margin-top: 6px; color: #A1A1AA; font-size: 14px; line-height: 1.5">Protein store and nutrition consults under the same roof.</div>
+</div>
+</div>
+<a href="tel:+962792141000" style="margin-top: 28px; display: inline-flex; align-items: center; min-height: 54px; padding: 0 28px; background: #16A34A; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 14px; letter-spacing: .06em; border-radius: 999px">ORDER OR ASK ABOUT MEAL PLANS</a>
+</div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" style="max-width: 1320px; margin: 0 auto; padding: 72px 24px 96px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px">
+<div style="position: relative; min-height: 560px; border-radius: 28px; overflow: hidden; background: #141416">
+<img src="assets/building.jpg" alt="The Hydrogen+ building on Irbid–Al Husn Road" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,11,0) 55%, rgba(10,10,11,.85) 100%)"></div>
+<div style="position: absolute; left: 24px; right: 24px; bottom: 24px">
+<div style="font-family: Anton, Impact, sans-serif; font-size: clamp(30px, 3vw, 44px); line-height: 1; text-transform: uppercase">Find the building with the heartbeat.</div>
+<div style="margin-top: 8px; color: #D4D4D8; font-size: 15px">Irbid – Al Husn Road, opposite Granada College · parking outside</div>
+<div dir="rtl" lang="ar" style="margin-top: 4px; font-family: Cairo, sans-serif; font-weight: 600; color: #D4D4D8; font-size: 16px; text-align: left">إربد – طريق إربد الحصن – مقابل كلية غرناطة</div>
+</div>
+</div>
+<div style="border-radius: 28px; background: #141416; border: 1px solid rgba(255,255,255,.08); padding: clamp(28px, 4vw, 48px); display: flex; flex-direction: column; justify-content: space-between; gap: 28px">
+<div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: .24em; color: #FF3B42">08 — VISIT &amp; HOURS</div>
+<span data-region="visitOpen" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid {{openBd}}; font-size: 12px; font-weight: 800; letter-spacing: .08em">
+<span class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: {{openDot}}; display: inline-block"></span>{{openText}}</span>
+</div>
+<h2 style="margin: 14px 0 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(44px, 4.6vw, 68px); line-height: .95; text-transform: uppercase">Open every day.</h2>
+<div data-region="hours" style="margin-top: 22px; display: flex; flex-direction: column">
+<sc-for list="{{hours}}" as="r" hint-placeholder-count="5">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 0; border-top: 1px solid rgba(255,255,255,.07)">
+<span style="display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; color: #FFFFFF">
+<span style="width: 10px; height: 10px; border-radius: 3px; background: {{r.color}}; display: inline-block"></span>{{r.label}}</span>
+<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 15px; color: #D4D4D8">{{r.text}}
+<sc-if value="{{r.open}}" hint-placeholder-val="{{ false }}">
+<span style="padding: 3px 8px; border-radius: 999px; background: rgba(34,197,94,.15); color: #86EFAC; font-size: 11px; font-weight: 800; letter-spacing: .1em">OPEN</span>
+</sc-if>
+</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px">
+<a href="tel:+962792141000" style="display: block; padding: 20px; border-radius: 18px; background: #0A0A0B; border: 1px solid rgba(255,255,255,.08); color: #FFFFFF; text-decoration: none">
+<div style="font-size: 12px; font-weight: 700; letter-spacing: .16em; color: #8B8B93">CALL</div>
+<div style="margin-top: 6px; font-family: Anton, Impact, sans-serif; font-size: 26px; letter-spacing: .02em">079 214 1000</div>
+</a>
+<a href="tel:+962792151000" style="display: block; padding: 20px; border-radius: 18px; background: #0A0A0B; border: 1px solid rgba(255,255,255,.08); color: #FFFFFF; text-decoration: none">
+<div style="font-size: 12px; font-weight: 700; letter-spacing: .16em; color: #8B8B93">CALL</div>
+<div style="margin-top: 6px; font-family: Anton, Impact, sans-serif; font-size: 26px; letter-spacing: .02em">079 215 1000</div>
+</a>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="btn-red" href="https://www.google.com/maps/search/?api=1&amp;query=Hydrogen+Plus+Fitness+%26+Spa+Irbid" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 14px; letter-spacing: .06em; border-radius: 999px">GET DIRECTIONS</a>
+<a class="btn-ghost" href="https://www.instagram.com/hydrogenplusfitness/" style="display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 24px; border: 1px solid rgba(255,255,255,.3); color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 14px; letter-spacing: .06em; border-radius: 999px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg>
+@HYDROGENPLUSFITNESS</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section style="position: relative; background: #E3121B; overflow: hidden">
+<svg class="ecg" viewBox="0 0 1440 120" preserveAspectRatio="none" style="position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); width: 100%; height: 160px; opacity: .35" aria-hidden="true"><path d="M0 60 H420 L448 60 L466 18 L490 104 L512 6 L534 82 L550 60 H1000 L1018 60 L1030 40 L1044 74 L1056 60 H1440" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"></path></svg>
+<div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px">
+<h2 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(52px, 7vw, 120px); line-height: .9; text-transform: uppercase; color: #FFFFFF">Start today.<br>Stronger tomorrow.</h2>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<a href="tel:+962792141000" style="display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 34px; background: #0A0A0B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 16px; letter-spacing: .06em; border-radius: 999px">CALL 079 214 1000</a>
+<span style="color: #FFE4E6; font-size: 14px; text-align: center">Ask about memberships &amp; current offers</span>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #0A0A0B; border-top: 1px solid rgba(255,255,255,.08)">
+<div style="max-width: 1320px; margin: 0 auto; padding: 56px 24px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px">
+<div>
+<div style="font-family: Anton, Impact, sans-serif; font-size: 34px; letter-spacing: .04em"><span style="color: #FF3B42">H</span>YDROGEN<span style="color: #FF3B42">+</span></div>
+<div style="font-size: 11px; font-weight: 700; letter-spacing: .32em; color: #A1A1AA; margin-top: 4px">FITNESS &amp; SPA · IRBID</div>
+<p style="margin: 16px 0 0; color: #8B8B93; font-size: 14px; line-height: 1.6">Classes · Cardio · Fitness · Bodybuilding · Spa · Nutrition</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<div style="font-size: 12px; font-weight: 700; letter-spacing: .16em; color: #8B8B93">EXPLORE</div>
+<a class="navlink" href="#coaches">Coaches</a>
+<a class="navlink" href="#classes">Class schedule</a>
+<a class="navlink" href="#ladies">Hydrogen for Her</a>
+<a class="navlink" href="#pool">Pool &amp; Lounge</a>
+<a class="navlink" href="#kitchen">Hydro Rest Kitchen</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: #D6D6D8">
+<div style="font-size: 12px; font-weight: 700; letter-spacing: .16em; color: #8B8B93">HOURS</div>
+<span>Men · 6 AM – 12 AM</span>
+<span>Women · 8 AM – 11 PM</span>
+<span>Ladies' pool · 9 AM – 5 PM</span>
+<span>Lounge · 6 PM – 2 AM</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<div style="font-size: 12px; font-weight: 700; letter-spacing: .16em; color: #8B8B93">CONTACT</div>
+<a class="navlink" href="tel:+962792141000">079 214 1000</a>
+<a class="navlink" href="tel:+962792151000">079 215 1000</a>
+<a class="navlink" href="https://www.instagram.com/hydrogenplusfitness/">Instagram</a>
+</div>
+</div>
+<div class="mpad" style="max-width: 1320px; margin: 0 auto; padding: 20px 24px 32px; border-top: 1px solid rgba(255,255,255,.06); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #8B8B93">
+<span>© 2026 Hydrogen+ Fitness &amp; Spa</span>
+<span>Train. Rest. Recharge.</span>
+</div>
+</footer>
+
+<!-- MOBILE ACTION BAR -->
+<nav class="mbar" aria-label="Quick actions" style="position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 6px; border-radius: 20px; background: rgba(10,10,11,.9); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(14px)">
+<a href="tel:+962792141000" style="display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; border-radius: 14px; background: #E3121B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: .04em">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>CALL</a>
+<a href="#classes" style="display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; border-radius: 14px; background: #1F1F23; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: .04em">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>CLASSES</a>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Hydrogen+Plus+Fitness+%26+Spa+Irbid" style="display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; border-radius: 14px; background: #1F1F23; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: .04em">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>MAP</a>
+</nav>
+
+</div>
+</template>
+
+<script>
+/* Tiny renderer for the page template: {{holes}}, <sc-for>, <sc-if>, onClick="{{fn}}". */
+(function () {
+  var HOLE = /\{\{\s*([^}]+?)\s*\}\}/g, WHOLE = /^\s*\{\{\s*([^}]+?)\s*\}\}\s*$/;
+  function look(scope, path) {
+    path = path.trim();
+    if (path === 'true') return true; if (path === 'false') return false;
+    var v = scope, parts = path.split('.');
+    for (var i = 0; i < parts.length; i++) { if (v == null) return undefined; v = v[parts[i]]; }
+    return v;
+  }
+  function interp(s, scope) { return s.replace(HOLE, function (_, p) { var v = look(scope, p); return v == null ? '' : String(v); }); }
+  var cache = {};
+  function asset(u) {
+    var A = window.__ASSETS; if (!A || !A[u]) return u;
+    if (!cache[u]) {
+      var bin = atob(A[u][1]), arr = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+      cache[u] = URL.createObjectURL(new Blob([arr], { type: A[u][0] }));
+    }
+    return cache[u];
+  }
+  function kids(node, scope, out) { for (var c = node.firstChild; c; c = c.nextSibling) render(c, scope, out); }
+  function render(node, scope, out) {
+    if (node.nodeType === 3) { out.appendChild(document.createTextNode(interp(node.nodeValue, scope))); return; }
+    if (node.nodeType !== 1) return;
+    var tag = node.localName;
+    if (tag === 'sc-for') {
+      var list = look(scope, (node.getAttribute('list') || '').replace(/[{}]/g, '')) || [];
+      var as = node.getAttribute('as') || 'item';
+      list.forEach(function (it, i) { var s = Object.create(scope); s[as] = it; s.$index = i; kids(node, s, out); });
+      return;
+    }
+    if (tag === 'sc-if') { if (look(scope, (node.getAttribute('value') || '').replace(/[{}]/g, ''))) kids(node, scope, out); return; }
+    var el = document.createElementNS(node.namespaceURI, tag);
+    for (var i = 0; i < node.attributes.length; i++) {
+      var a = node.attributes[i], name = a.name, val = a.value, m = val.match(WHOLE);
+      if (name.indexOf('hint-') === 0) continue;
+      if (/^on[a-z]+$/.test(name)) { var fn = m && look(scope, m[1]); if (typeof fn === 'function') el.addEventListener(name.slice(2), fn); continue; }
+      var v = m ? look(scope, m[1]) : interp(val, scope);
+      if (v == null) continue;
+      v = String(v);
+      if (name === 'src' || name === 'poster') v = asset(v);
+      el.setAttribute(name, v);
+    }
+    kids(node, scope, el);
+    out.appendChild(el);
+  }
+  window.DCLogic = function (props) { this.props = props || {}; this.state = {}; };
+  window.DCLogic.prototype.setState = function (p) { Object.assign(this.state, typeof p === 'function' ? p(this.state) : p); window.__update(); };
+  window.DCLogic.prototype.forceUpdate = function () { window.__update(); };
+  window.__dcRender = render;
+})();
+</script>
+<script>
+/* Page logic: class schedule, coaches, live opening hours (Asia/Amman), service stripe, video playback. */
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    var t = this.todayIdx(this.ammanNow().wd);
+    this.state = { day: t >= 0 ? t : 0, coach: 0 };
+  }
+  ammanNow() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Amman', hour: '2-digit', minute: '2-digit', weekday: 'short', hourCycle: 'h23' }).formatToParts(new Date());
+      var o = {}; parts.forEach(function (p) { o[p.type] = p.value; });
+      var wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(o.weekday);
+      var d0 = new Date();
+      return { h: (parseInt(o.hour, 10) % 24) + parseInt(o.minute, 10) / 60, wd: wd < 0 ? d0.getDay() : wd };
+    } catch (e) { var d = new Date(); return { h: d.getHours() + d.getMinutes() / 60, wd: d.getDay() }; }
+  }
+  todayIdx(wd) { return wd === 6 ? 0 : (wd === 5 ? -1 : wd + 1); }
+  componentDidMount() {
+    var vids = document.querySelectorAll('video[data-bg]');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function play(v) { v.muted = true; v.defaultMuted = true; v.playsInline = true; var p = v.play(); if (p && p.catch) { p.catch(function () {}); } }
+    var i;
+    if (reduce) { for (i = 0; i < vids.length; i++) { vids[i].pause(); } }
+    else if (!('IntersectionObserver' in window)) { for (i = 0; i < vids.length; i++) { play(vids[i]); } }
+    else {
+      this._io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { play(e.target); } else { e.target.pause(); } });
+      }, { rootMargin: '200px 0px', threshold: 0.01 });
+      for (i = 0; i < vids.length; i++) { this._io.observe(vids[i]); }
+    }
+    var self = this;
+    this._tick = setInterval(function () { self.forceUpdate(); }, 60000);
+  }
+  componentWillUnmount() {
+    if (this._io) { this._io.disconnect(); }
+    if (this._tick) { clearInterval(this._tick); }
+  }
+  renderVals() {
+    var NOW = this.ammanNow(); var hr = NOW.h; var tIdx = this.todayIdx(NOW.wd);
+    var DAYS = [
+      { short: 'SAT', name: 'Saturday', c: [['Cycling','Marwa'],['Core','Katie'],['Cycling','Farah'],['Back & Plank','Lesya'],['Belly Dance','Farah'],['Core','Sara']] },
+      { short: 'SUN', name: 'Sunday', c: [['Power Glutes','Lesya'],['Tabata','Farah'],['Legs','Katie'],['Tabata','Sara'],['Belly Dance','Abeer'],['Legs','Katie']] },
+      { short: 'MON', name: 'Monday', c: [['Belly Dance','Abeer'],['Legs','Katie'],['Abs','Sara'],['Yoga','Svitlana'],['Zumba','Farah'],['Upper Body','Lesya']] },
+      { short: 'TUE', name: 'Tuesday', c: [['Pilates Mat','Marwa'],['Hips & Abs','Sara'],['Step','Katie'],['Tabata','Farah'],['Inner Thigh','Lesya'],['Core','Farah']] },
+      { short: 'WED', name: 'Wednesday', c: [['Zumba','Farah'],['Shoulders & Triceps','Lesya'],['Tabata','Sara'],['Step','Katie'],['Belly Dance','Abeer'],['Aerobic','Sara']] },
+      { short: 'THU', name: 'Thursday', c: [['Yoga','Svitlana'],['Cycling','Farah'],['Full Body','Katie'],['Hips & Abs','Sara'],['Abs','Katie']] }
+    ];
+    var TIMES = [['10','AM',10],['11','AM',11],['5','PM',17],['6','PM',18],['7','PM',19],['8','PM',20]];
+    var self = this;
+    var sel = this.state.day;
+    var days = DAYS.map(function (d, i) {
+      var on = i === sel;
+      return {
+        short: d.short, name: d.name, selected: on ? 'true' : 'false', isToday: i === tIdx, todayFg: on ? '#FFE4E6' : '#FF8A8F',
+        bg: on ? '#E3121B' : '#18181B', fg: on ? '#FFFFFF' : '#E4E4E7', bd: on ? '#E3121B' : 'rgba(255,255,255,.12)',
+        pick: function () { self.setState({ day: i }); }
+      };
+    });
+    var isTodaySel = sel === tIdx; var nextFound = false;
+    var slots = DAYS[sel].c.map(function (c, i) {
+      var start = TIMES[i][2]; var past = isTodaySel && hr >= start + 1; var next = false; var badge = '';
+      if (isTodaySel && !past && !nextFound) { nextFound = true; next = true; badge = hr >= start ? 'ON NOW' : 'NEXT UP'; }
+      return { h: TIMES[i][0], ap: TIMES[i][1], cls: c[0], coach: c[1], next: next, badge: badge, op: past ? '0.45' : '1', bd: next ? '#E3121B' : 'rgba(255,255,255,.08)' };
+    });
+    var dayNote = '';
+    if (tIdx === -1 && sel === 0) { dayNote = 'Friday is rest day — no classes today. Here is Saturday’s line-up.'; }
+    else if (isTodaySel && !nextFound) { dayNote = 'Today’s classes are done — tap tomorrow to plan ahead.'; }
+    function pct(x) { return (x / 24 * 100).toFixed(3) + '%'; }
+    var H = [
+      { label: 'Gym — Men', text: '6:00 AM – 12:00 AM', a: 6, b: 24, color: '#E3121B' },
+      { label: 'Gym — Women', text: '8:00 AM – 11:00 PM', a: 8, b: 23, color: '#FF5C8A' },
+      { label: 'Ladies’ pool', text: 'Daily 9:00 AM – 5:00 PM', a: 9, b: 17, color: '#38BDF8' },
+      { label: 'Nutritionist', text: 'Daily 9:00 AM – 5:00 PM', a: 9, b: 17, color: '#22C55E' },
+      { label: 'Hydrogen Lounge', text: '6:00 PM – 2:00 AM', a: 18, b: 24, a2: 0, b2: 2, color: '#F59E0B' }
+    ];
+    var hours = H.map(function (r) {
+      var open = (hr >= r.a && hr < r.b) || (r.b2 !== undefined && hr >= r.a2 && hr < r.b2);
+      return { label: r.label, text: r.text.replace('Daily ', ''), color: r.color, open: open };
+    });
+    var gymOpen = hr >= 6 && hr < 24;
+    var openText = gymOpen ? 'OPEN NOW · UNTIL 12 AM' : 'CLOSED · OPENS 6 AM';
+    var openDot = gymOpen ? '#22C55E' : '#F59E0B';
+    var openBd = gymOpen ? 'rgba(34,197,94,.55)' : 'rgba(245,158,11,.55)';
+    var GOLD = '#FBBF24', SILVER = '#E4E4E7', BRONZE = '#F59E0B', GREY = '#A1A1AA', RED = '#FF3B42';
+    var CO = [
+      { name: 'Noor Al-Jarrah', tag: 'BODYBUILDING', role: 'IFBB ELITE · BODYBUILDING COACH', photo: 'assets/coach-noor.jpg', alt: 'Coach Noor Al-Jarrah on a bodybuilding competition stage', handle: 'noor___aljarrah', a: 16, b: 24,
+        facts: [['1ST', 'Jordan Championship, 70 kg — 2025', GOLD], ['5TH', 'Petra International, 75 kg — 2025', GREY], ['2ND', 'Jordan Championship, 65 kg — 2024', SILVER], ['1ST', 'Jordan Championship, 65 kg — 2023', GOLD], ['ONLINE', 'Online coaching available', RED]] },
+      { name: 'Mohammed Dmour', tag: 'BODYBUILDING', role: 'BODYBUILDER · NUTRITION SPECIALIST', photo: 'assets/coach-dmour.jpg', alt: 'Coach Mohammed Dmour flexing in black and white', handle: 'abudmourr', a: 11, b: 20,
+        facts: [['2ND', 'Petra Open Championship, Classic Physique — 2026', SILVER], ['3RD', 'Petra Open Championship, Bodybuilding 80 kg — 2026', BRONZE], ['2ND', 'Jordan national championship, 75 kg — 2024', SILVER], ['DIET', 'Nutrition specialist · online coaching & PT', RED]] },
+      { name: 'Mohammad Janzeer', tag: 'FITNESS', role: 'NASM CERTIFIED PERSONAL TRAINER', photo: 'assets/coach-janzeer.jpg', alt: 'Coach Mohammad Janzeer in a red Hydrogen shirt on the gym floor', handle: 'coach_janzeer', a: 16, b: 24,
+        facts: [['CPT', 'NASM International Certified Personal Trainer', GOLD], ['B.A.', 'Radio & TV, Yarmouk University', GREY], ['EXP', 'Coaching experience at Leaders Gym and Eagle Gym', GREY]],
+        quote: 'Strength starts from the ground up — squats, pull-ups and presses.' },
+      { name: 'Ahmed Inzy', tag: 'FITNESS', role: 'BODYBUILDING & FITNESS INSTRUCTOR', photo: 'assets/coach-inzy.jpg', alt: 'Coach Ahmed Inzy in a Hydrogen shirt with arms crossed', handle: 'lnzy_ahmed', a: 16, b: 24,
+        facts: [['PT', 'Bodybuilding & fitness instructor · private training', RED], ['FOOT', 'Football coach', GREY], ['SIGN', 'Sign-language interpreter', GREY]] },
+      { name: 'Hajim Sahtut', tag: 'BODYBUILDING', role: 'BODYBUILDING COACH', photo: 'assets/coach-hajim.jpg', alt: 'Coach Hajim Sahtut', handle: 'hajim_sahtut', a: 16, b: 24,
+        facts: [['PRO', 'Bodybuilding coach — muscle, strength and discipline', RED], ['EVE', 'Evening coach — on the floor from 4 PM to midnight', GREY]],
+        quote: 'What seems difficult to you now will soon be part of the warm-up.' },
+      { name: 'Omar Mishael', tag: 'FITNESS', role: 'FITNESS COACH · MORNING SHIFT', photo: 'assets/coach-mishael.jpg', alt: 'Coach Omar Mishael training on the Hydrogen floor', handle: 'coach_mishael', a: 6, b: 15,
+        facts: [['AM', 'Your early-morning coach — first on the floor every day', RED], ['FIT', 'Fitness coach · مدرب لياقة بدنية', GREY]] }
+    ];
+    function fmt(h) { var hh = h % 24; var ap = hh < 12 ? 'AM' : 'PM'; var x = hh % 12; if (x === 0) x = 12; return x + ' ' + ap; }
+    var csel = this.state.coach || 0;
+    var onCount = 0;
+    var coaches = CO.map(function (k, i) {
+      var has = k.a !== undefined;
+      var on = has && hr >= k.a && hr < k.b;
+      if (on) onCount++;
+      var s = i === csel;
+      return {
+        name: k.name, tag: k.tag, photo: k.photo, onNow: on, selected: s ? 'true' : 'false',
+        shortShift: has ? fmt(k.a) + ' – ' + fmt(k.b) : k.shortShift,
+        bg: s ? 'rgba(227,18,27,.92)' : 'rgba(20,20,22,.72)', bd: s ? '#FF3B42' : 'rgba(255,255,255,.1)', sub: s ? '#FFE4E6' : '#A1A1AA',
+        pick: function () { self.setState({ coach: i }); }
+      };
+    });
+    var k = CO[csel]; var hasS = k.a !== undefined;
+    var c = {
+      num: (csel < 9 ? '0' : '') + (csel + 1), name: k.name, tag: k.tag, role: k.role, photo: k.photo, alt: k.alt,
+      shift: hasS ? 'Daily · ' + fmt(k.a) + ' – ' + fmt(k.b) : k.shift, hasShift: hasS, l: hasS ? pct(k.a) : '0%', w: hasS ? pct(k.b - k.a) : '0%',
+      facts: k.facts.map(function (f) { return { k: f[0], v: f[1], color: f[2] }; }),
+      hasQuote: !!k.quote, quote: k.quote || '',
+      ig: 'https://www.instagram.com/' + k.handle + '/', dm: 'https://ig.me/m/' + k.handle, handle: '@' + k.handle,
+      contactHref: k.wa ? 'https://wa.me/' + k.wa : (k.tag === 'BOXING' ? '#boxing' : 'tel:+962792141000'),
+      contactLabel: k.wa ? 'WHATSAPP COACH' : (k.tag === 'BOXING' ? 'SEE BOXING AT HYDROGEN' : 'BOOK A SESSION')
+    };
+    var onNowText = onCount === 0 ? 'Coaches on the floor from 6 AM to midnight' : (onCount === 1 ? '1 coach on the floor right now' : onCount + ' coaches on the floor right now');
+    var SV = [
+      ['STRENGTH & CARDIO', 'The Floor', 'Machines, free weights and a full cardio deck across the biggest training floor in the north.', '#coaches', 'MEET THE COACHES', 'assets/service-floor.mp4', 'assets/service-floor.jpg', '#E3121B'],
+      ['COMBAT', 'The Ring', 'Bag and pad work with Coach Sanad Al-Hussien, Kingdom Boxing gold medalist — for every level.', '#boxing', 'TRAIN WITH SANAD', 'assets/service-boxing.mp4', 'assets/service-boxing.jpg', '#E3121B'],
+      ['STUDIO & PILATES', 'Classes & Pilates', '35+ classes a week — Zumba, Yoga, Tabata, Cycling, Belly Dance — plus Irbid’s first Pilates room.', '#classes', 'SEE THE SCHEDULE', 'assets/service-studio.mp4', 'assets/service-studio.jpg', '#DB2777'],
+      ['RECOVER', 'Pool & Spa', 'The biggest pool in the north under a glass roof, swim courses for kids and ladies, and a spa to unwind.', '#pool', 'DIVE IN', 'assets/service-pool.mp4', 'assets/service-pool.jpg', '#0284C7'],
+      ['EAT CLEAN', 'Hydro Rest Kitchen', 'Grilled proteins, balanced plates and calorie-counted meal plans — with a nutritionist on site daily.', '#kitchen', 'SEE THE KITCHEN', 'assets/service-kitchen.mp4', 'assets/service-kitchen.jpg', '#16A34A'],
+      ['UNWIND', 'Hydrogen Lounge', 'Terrace seating by the pool, your favourite drinks and match nights — daily 6 PM – 2 AM.', '#lounge', 'VISIT THE LOUNGE', 'assets/service-lounge.mp4', 'assets/service-lounge.jpg', '#D97706']
+    ];
+    var services = SV.map(function (s, i) {
+      return { num: '0' + (i + 1), tag: s[0], title: s[1], text: s[2], href: s[3], cta: s[4], video: s[5], poster: s[6], accent: s[7] };
+    });
+    function svcScroll(dir) {
+      var t = document.getElementById('svc-track'); if (!t) return;
+      var card = t.querySelector('.svc-card'); var step = card ? card.getBoundingClientRect().width + 16 : 420;
+      t.scrollBy({ left: dir * step, behavior: 'smooth' });
+    }
+    return { days: days, slots: slots, dayNote: dayNote, hours: hours, openText: openText, openDot: openDot, openBd: openBd,
+      coaches: coaches, c: c, onNowText: onNowText, services: services,
+      svcNext: function () { svcScroll(1); }, svcPrev: function () { svcScroll(-1); } };
+  }
+}
+</script>
+<script>
+(function () {
+  var tpl = document.getElementById('page').content;
+  var app = document.getElementById('app');
+  var comp = new Component({});
+  var render = window.__dcRender;
+  window.__update = function () {
+    var vals = comp.renderVals();
+    var act = document.activeElement, focusRegion = null, focusIdx = -1;
+    if (act && act.closest) { var r = act.closest('[data-region]'); if (r) { focusRegion = r.getAttribute('data-region'); focusIdx = Array.prototype.indexOf.call(r.querySelectorAll('a,button'), act); } }
+    tpl.querySelectorAll('[data-region]').forEach(function (t) {
+      var key = t.getAttribute('data-region');
+      var live = app.querySelector('[data-region="' + key + '"]');
+      if (!live) return;
+      var f = document.createDocumentFragment(); render(t, vals, f);
+      var fresh = f.firstChild; live.replaceWith(fresh);
+      if (key === focusRegion && focusIdx >= 0) { var el = fresh.querySelectorAll('a,button')[focusIdx]; if (el) el.focus({ preventScroll: true }); }
+    });
+  };
+  var frag = document.createDocumentFragment();
+  for (var c = tpl.firstChild; c; c = c.nextSibling) render(c, comp.renderVals(), frag);
+  app.appendChild(frag);
+  if (comp.componentDidMount) comp.componentDidMount();
+})();
+</script>
+</body>
+</html>
